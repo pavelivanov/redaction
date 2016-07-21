@@ -1,0 +1,26 @@
+{
+  "name": "redux-action-creator",
+  "version": "0.0.1",
+  "description": "Simple actions creator without string constants",
+  "homepage": "https://github.com/grammka/redux-action-creator#readme",
+  "author": "Pavel Ivanov (grammka@gmail.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grammka/redux-action-creator.git"
+  },
+  "keywords": [
+    "redux",
+    "action",
+    "creator"
+  ],
+  "scripts": {
+
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+
+  }
+}
