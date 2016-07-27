@@ -1,24 +1,24 @@
 {
-  "name": "redux-action-creator",
+  "name": "redbox",
   "version": "0.0.1",
   "description": "Simple actions creator without string constants",
-  "homepage": "https://github.com/grammka/redux-action-creator#readme",
+  "homepage": "https://github.com/grammka/redbox#readme",
   "author": "Pavel Ivanov (grammka@gmail.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grammka/redux-action-creator.git"
+    "url": "git+https://github.com/grammka/redbox.git"
   },
   "keywords": [
     "redux",
     "action",
+    "reducer",
     "creator"
   ],
-  "scripts": {
-
-  },
+  "scripts": {},
   "dependencies": {
-
+    "lodash.merge": "^4.5.0",
+    "superagent": "^2.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",
