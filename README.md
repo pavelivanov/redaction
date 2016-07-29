@@ -1,5 +1,5 @@
 # Redux tool Box
-Simple actions creator without string constants
+#####Simple actions creator without string constants
 
 ## Usage
 
@@ -10,6 +10,20 @@ import { createAction } from 'redact'
 export const getAll = createAction.request({
   endpoint: 'http://yoursite.com/api/bottles',
   method: 'GET'
+})
+```
+
+#### `actions/ui.js`
+```javascript
+import { createAction } from 'redact'
+
+export const initialState = {
+  locale: 'en'
+}
+
+export const setLocale = createAction({
+  subset: 'locale',
+  reduce: (state = initialState, payload) => ({ ...state, locale: payload })
 })
 ```
 
@@ -53,18 +67,23 @@ export default class Bottles extends React.Component {
       subset: 'bottles',
       strategy: 'merge'
     })
+
+    actions.ui.setLocale('ru')
   }
 }
 ```
 
-Store result after component will mount:
+Store content will be:
 
 ```json
 {
   "bottles": {
     "pending": false,
-    "data": [...Bottles],
+    "data": ["...Bottles"],
     "error": null
+  },
+  "ui": {
+    "locale": "ru"
   }
 }
 ```

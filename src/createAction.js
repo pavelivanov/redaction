@@ -2,16 +2,26 @@ import sendRequest from './sendRequest'
 import merge from 'lodash.merge'
 
 
-const createAction = (params) => {
-  return (dispatch) => {
-    console.log('simple action')
+const createAction = (options = {}) => {
+  const action = (dispatch) => (payload) => {
+    dispatch({ meta: options, payload })
   }
+
+  action.type = 'reducerAction'
+
+  return action
 }
 
-createAction.request = (defaults = {}) => (dispatch) => (opts = {}) => {
-  const options = merge(defaults, opts)
+createAction.request = (defaults = {}) => {
+  const action = (dispatch) => (opts = {}) => {
+    const options = merge(defaults, opts)
 
-  return sendRequest({ options, dispatch })
+    sendRequest({ options, dispatch })
+  }
+
+  action.type = 'apiAction'
+
+  return action
 }
 
 

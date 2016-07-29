@@ -9,13 +9,17 @@ const createActions = (actions, dispatch) => {
     for (let methodName in actions[actionNode]) {
       if (!actions[actionNode].hasOwnProperty(methodName)) continue
 
-      const type            = `${actionNode}.${methodName}`
-      const typedDispatch   = (payload) => dispatch({ type, payload })
-      const action          = actions[actionNode][methodName](typedDispatch)
+      if (methodName == 'initialState') continue
 
-      dispatchedActions[actionNode][methodName] = (...args) => {
-        return action(...args)
-      }
+      const type = `${actionNode}.${methodName}`
+
+      // (dispatch) => (payload / opts) => ...
+      const typedDispatch = (params) => dispatch({ type, params })
+      
+      // (payload / opts) => { dispatch / request }
+      const action = actions[actionNode][methodName](typedDispatch)
+
+      dispatchedActions[actionNode][methodName] = (...args) => action(...args)
     }
   }
 
