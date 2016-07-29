@@ -33,10 +33,8 @@ export const setLocale = createAction({
 import { createStore, createReducer } from 'redact'
 import actions from 'actions'
 
-
 const reducer = createReducer(actions)
 const initialState = {}
-
 
 const store = createStore({
   reducer,
@@ -64,7 +62,7 @@ import actions from 'core/actions'
 export default class Bottles extends React.Component {
   componentWillMount() {
     actions.bottles.getAll({
-      subset: 'bottles',
+      subset: 'list',
       strategy: 'merge'
     })
 
@@ -78,9 +76,11 @@ Store content will be:
 ```json
 {
   "bottles": {
-    "pending": false,
-    "data": ["...Bottles"],
-    "error": null
+    "list": {
+      "pending": false,
+      "data": ["...Bottles"],
+      "error": null
+    }
   },
   "ui": {
     "locale": "ru"
