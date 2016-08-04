@@ -1,4 +1,4 @@
-<p align="center">
+<p>
   <img src="./images/redbox-small-logo.png" height="70" />
 </p>
 
