@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./images/redbox-logo.png)" />
+</p>
+
 # Redux tool Box
 #####Simple actions creator without string constants
 Used `superagent` for api requests

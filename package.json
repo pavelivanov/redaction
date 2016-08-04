@@ -16,7 +16,7 @@
     "creator"
   ],
   "scripts": {
-    "prepublish": "npm clean && npm build"
+    "prepublish": "npm run build",
     "clean": "rimraf ./lib",
     "dev": "babel -w ./src --out-dir ./lib",
     "build": "npm run clean && babel ./src --out-dir ./lib"
