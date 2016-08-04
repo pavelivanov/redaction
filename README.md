@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./images/redbox-logo.png" />
+  <img src="./images/redbox-small-logo.png" height="70" />
 </p>
 
 # Redux tool Box
