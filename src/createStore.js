@@ -1,4 +1,4 @@
-import { applyMiddleware, compose, createStore } from 'redux'
+import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 
 
@@ -14,7 +14,7 @@ const defaultEnhancers = [
 const devtools = typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : (v) => v
 
 
-export default ({ reducer, initialState = {}, middlewares = [], enhancers = [] }) => {
+export default ({ initialState = {}, reducers = {}, middlewares = [], enhancers = [] }) => {
 
   const finalMiddlewares = [
     ...defaultMiddlewares,
@@ -28,7 +28,7 @@ export default ({ reducer, initialState = {}, middlewares = [], enhancers = [] }
   ]
 
   const store = createStore(
-    reducer,
+    combineReducers(reducers),
     initialState,
     compose(
       applyMiddleware(...finalMiddlewares),

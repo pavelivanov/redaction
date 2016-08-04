@@ -1,13 +1,12 @@
-const apiAction = ({ actionNode }) => (state = {}, { type, meta, payload }) => {
-  const newState = JSON.parse(JSON.stringify(state))
-  
+const apiAction = (state = {}, { type, meta, payload }) => {
+  const newState = Object.assign({}, state)
+
   if (meta.subset) {
     console.log('Dispatch reducer: ', meta, payload)
     console.log('Prev state: ', state)
 
-    if (!newState[actionNode]) {
-      newState[actionNode] = {}
-      newState[actionNode][meta.subset] = {
+    if (!newState[meta.subset]) {
+      newState[meta.subset] = {
         pending: false,
         data: null,
         error: null
@@ -22,7 +21,7 @@ const apiAction = ({ actionNode }) => (state = {}, { type, meta, payload }) => {
       pending = true
       error   = null
 
-      if (!newState[actionNode][meta.subset]) {
+      if (!newState[meta.subset]) {
         data = null
       }
     }
@@ -30,7 +29,7 @@ const apiAction = ({ actionNode }) => (state = {}, { type, meta, payload }) => {
       pending = false
       error   = null
 
-      data = newState[actionNode][meta.subset] && newState[actionNode][meta.subset].data
+      data = newState[meta.subset] && newState[meta.subset].data
 
       if (data) {
         if (meta.strategy == 'merge') {
@@ -50,15 +49,15 @@ const apiAction = ({ actionNode }) => (state = {}, { type, meta, payload }) => {
     }
 
     if (typeof pending != 'undefined') {
-      newState[actionNode][meta.subset].pending = pending
+      newState[meta.subset].pending = pending
     }
 
     if (typeof data != 'undefined') {
-      newState[actionNode][meta.subset].data = data
+      newState[meta.subset].data = data
     }
 
     if (typeof error != 'undefined') {
-      newState[actionNode][meta.subset].error = error
+      newState[meta.subset].error = error
     }
 
     console.log('New state: ', newState)

@@ -2,19 +2,34 @@ import sendRequest from './sendRequest'
 import merge from 'lodash.merge'
 
 
-const createAction = (options = {}) => {
-  const action = (dispatch) => (payload) => {
-    dispatch({ meta: options, payload })
+const reserved = [
+  'onError',
+  'onResponse',
+]
+
+const isReserved = (key) => reserved.indexOf(key) >= 0
+const isFn = (key) => typeof key == 'function'
+
+const mergeOptions = (defaults, opt) => {
+  const options = merge(defaults, opt)
+
+  if ('params' in options) {
+    for (const key in options) {
+      if (!options.hasOwnProperty(key)) continue
+
+      if (!isReserved(key) && isFn(options[key])) {
+        options[key] = options[key](options.params)
+      }
+    }
   }
 
-  action.type = 'reducerAction'
-
-  return action
+  return options
 }
 
-createAction.request = (defaults = {}) => {
-  const action = (dispatch) => (opts = {}) => {
-    const options = merge(defaults, opts)
+
+const createRequestAction = (defaults = {}) => {
+  let action = (dispatch) => (opts = {}) => {
+    const options = mergeOptions(defaults, opts)
 
     sendRequest({ options, dispatch })
   }
@@ -22,6 +37,27 @@ createAction.request = (defaults = {}) => {
   action.type = 'apiAction'
 
   return action
+}
+
+const createReducerAction = (reducer) => {
+  let action = (dispatch) => (payload) => dispatch({ reducer, payload })
+
+  action.type = 'reducerAction'
+
+  return action
+}
+
+
+const createAction = (config) => {
+  if (typeof config == 'object') {
+    return createRequestAction(config)
+  }
+  else if (typeof config == 'function') {
+    return createReducerAction(config)
+  }
+  else {
+    throw Error('Redbox: Passed wrong config type to createAction')
+  }
 }
 
 

@@ -1,12 +1,12 @@
 import createAction from './createAction'
 import createActions from './createActions'
-import createReducer from './createReducer'
+import createReducers from './createReducers'
 import createStore from './createStore'
 
 
 export {
   createAction,
   createActions,
-  createReducer,
+  createReducers,
   createStore,
 }

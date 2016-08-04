@@ -8,31 +8,40 @@ const createReducer = (actions) => {
   for (let actionNode in actions) {
     if (!actions.hasOwnProperty(actionNode)) continue
 
+    const initialState = 'initialState' in actions[actionNode] ? actions[actionNode].initialState : {}
+    const nodeReducers = {}
+
     for (let methodName in actions[actionNode]) {
       if (!actions[actionNode].hasOwnProperty(methodName)) continue
-
+      if (methodName == 'default') continue
       if (methodName == 'initialState') continue
 
       const action      = actions[actionNode][methodName]
       const reducerKey  = `${actionNode}.${methodName}`
+      let reducer
 
       if (action.type == 'apiAction') {
-        reducers[reducerKey] = apiAction({ actionNode })
+        reducer = apiAction
       }
       else if (action.type == 'reducerAction') {
-        reducers[reducerKey] = reducerAction({ actionNode })
+        reducer = reducerAction
       }
+
+      nodeReducers[reducerKey] = reducer
+    }
+
+    reducers[actionNode] = (state = initialState, { type, params }) => {
+      if (!(type in nodeReducers)) {
+        return state
+      }
+
+      return nodeReducers[type](state, params)
     }
   }
 
-  return (state = {}, { type, params }) => {
-    if (!(type in reducers)) {
-      return state
-    }
-
-    return reducers[type](state, params)
-  }
+  return reducers
 }
 
 
 export default createReducer
+

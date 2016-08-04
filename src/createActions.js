@@ -1,14 +1,14 @@
 const createActions = (actions, dispatch) => {
   const dispatchedActions = {}
 
-  for (let actionNode in actions) {
+  for (const actionNode in actions) {
     if (!actions.hasOwnProperty(actionNode)) continue
 
     dispatchedActions[actionNode] = {}
 
-    for (let methodName in actions[actionNode]) {
+    for (const methodName in actions[actionNode]) {
       if (!actions[actionNode].hasOwnProperty(methodName)) continue
-
+      if (methodName == 'default') continue
       if (methodName == 'initialState') continue
 
       const type = `${actionNode}.${methodName}`
