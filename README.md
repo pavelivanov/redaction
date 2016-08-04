@@ -2,8 +2,7 @@
   <img src="./images/redbox-small-logo.png" height="70" />
 </p>
 
-# Redux tool Box
-#####Simple actions creator without string constants
+####Simple actions creator without string constants
 Used `superagent` for api requests
 
 ```javascript
