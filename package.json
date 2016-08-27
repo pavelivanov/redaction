@@ -22,7 +22,7 @@
     "build": "npm run clean && babel ./src --out-dir ./lib"
   },
   "dependencies": {
-    "lodash.merge": "^4.5.0",
+    "deepmerge": "^0.2.10",
     "superagent": "^2.1.0"
   },
   "devDependencies": {

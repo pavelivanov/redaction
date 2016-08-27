@@ -1,5 +1,5 @@
 import sendRequest from './sendRequest'
-import merge from 'lodash.merge'
+import merge from 'deepmerge'
 
 
 const reserved = [
@@ -28,7 +28,7 @@ const mergeOptions = (defaults, opt) => {
 
 
 const createRequestAction = (defaults = {}) => {
-  let action = (dispatch) => (opts = {}) => {
+  const action = (dispatch) => (opts = {}) => {
     const options = mergeOptions(defaults, opts)
 
     sendRequest({ options, dispatch })
@@ -40,7 +40,7 @@ const createRequestAction = (defaults = {}) => {
 }
 
 const createReducerAction = (reducer) => {
-  let action = (dispatch) => (payload) => dispatch({ reducer, payload })
+  const action = (dispatch) => (payload) => dispatch({ reducer, payload })
 
   action.type = 'reducerAction'
 
