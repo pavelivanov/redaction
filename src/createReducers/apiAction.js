@@ -1,9 +1,6 @@
 const apiAction = (state = {}, { type, meta, payload }) => {
-  const newState = Object.assign({}, state)
-
   if (meta.subset) {
-    console.log('Dispatch reducer: ', meta, payload)
-    console.log('Prev state: ', state)
+    const newState = Object.assign({}, state)
 
     if (!newState[meta.subset]) {
       newState[meta.subset] = {
@@ -60,10 +57,10 @@ const apiAction = (state = {}, { type, meta, payload }) => {
       newState[meta.subset].error = error
     }
 
-    console.log('New state: ', newState)
-
     return newState
   }
+
+  return state
 }
 
 export default apiAction
