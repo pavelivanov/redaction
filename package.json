@@ -1,6 +1,6 @@
 {
   "name": "redbox",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Simple actions creator without string constants",
   "homepage": "https://github.com/grammka/redbox#readme",
   "author": "Pavel Ivanov (grammka@gmail.com)",
@@ -10,6 +10,7 @@
     "url": "git+https://github.com/grammka/redbox.git"
   },
   "keywords": [
+    "react",
     "redux",
     "action",
     "reducer",
