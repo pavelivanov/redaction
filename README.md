@@ -10,14 +10,85 @@
 
 [![NPM](https://nodei.co/npm/redbox.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/redbox/)
 
+
+## Overview
+
+You still using ugly way of creation actions and reducers, don't you? Smth like this:
+
+```javascript
+const ADD_TODO = 'ADD_TODO'
+
+export {
+  ADD_TODO
+}
+```
+
+```javascript
+import { ADD_TODO } from 'constants'
+
+export const addTODO = () => {
+  return (dispatch) => {
+    dispatch({
+      type: ADD_TODO,
+      item
+    })
+  }
+}
+```
+
+```javascript
+const ADD_TODO = 'ADD_TODO'
+
+const initialState = {
+  TODO: []
+}
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+
+    case 'ADD_TODO':
+      return {
+        ...state,
+        TODO: [
+          ...state.TODO,
+          action.TODO
+        ]
+      }
+
+    default:
+      return state
+  }
+}
+```
+
+##### Stop it !!!
+
+Now, with **Redbox** you can do same like this:
+
+```javascript
+import { createAction } from 'redbox'
+
+export const initialState = {
+ TODO: []
+}
+
+export const addTODO = createAction((state, payload) => {
+  return { ...state, TODO: { ...state.TODO, payload } }
+})
+```
+
+##### That's it !!! Nifty !!!
+
+
+
 ## Attention
 
-Used `superagent` for api requests
+**Redbox** uses [**superagent**](https://visionmedia.github.io/superagent/) for API requests
 
 
 ## Install
 
-```javascript
+```bash
 npm install --save redbox
 ```
 
@@ -53,7 +124,7 @@ Check [superagent docs](http://visionmedia.github.io/superagent/) for more infor
 import { createAction } from 'redbox'
 
 export const getPosts = createAction({
-  endpoint: '/api/posts'
+  endpoint: '/api/posts',
   method: 'GET',
   subset: 'posts'
 })
@@ -76,8 +147,8 @@ To create simple reducer pass function as argument
 ```javascript
 import { createAction } from 'redbox'
 
-export const setLocale = createAction((store, payload) => {
-  return { ...store, locale: payload }
+export const setLocale = createAction((state, payload) => {
+  return { ...state, locale: payload }
 })
 
 // use it
@@ -98,8 +169,8 @@ export const initialState = {
   //...
 }
 
-export const setLocale = createAction((store, payload) => {
-  return { ...store, locale: payload }
+export const setLocale = createAction((state, payload) => {
+  return { ...state, locale: payload }
 })
 ```
 
@@ -176,8 +247,8 @@ export const initialState = {
   locale: 'en'
 }
 
-export const setLocale = createAction((store, payload) => {
-  return { ...store, locale: payload }
+export const setLocale = createAction((state, payload) => {
+  return { ...state, locale: payload }
 })
 ```
 
