@@ -61,7 +61,7 @@ export default (state = initialState, action) => {
 }
 ```
 
-##### Stop it !!!
+#### Stop it !!!
 
 Now, with **Redbox** you can do same like this:
 
@@ -77,7 +77,7 @@ export const addTODO = createAction((state, payload) => {
 })
 ```
 
-##### That's it !!! Nifty !!!
+#### That's it !!! Nifty !!!
 
 
 
