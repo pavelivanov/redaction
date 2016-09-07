@@ -2,12 +2,27 @@
   <img src="./images/redbox-small-logo.png" height="70" />
 </p>
 
-####Simple actions creator without string constants
+### Simple actions creator without string constants
+
+[![Npm Version](https://badge.fury.io/js/redbox.svg)](https://www.npmjs.com/package/redbox)
+[![Month Downloads](https://img.shields.io/npm/dm/redbox.svg)](http://npm-stat.com/charts.html?package=redbox)
+[![Npm Licence](https://img.shields.io/npm/l/redbox.svg)](https://www.npmjs.com/package/redbox)
+
+[![NPM](https://nodei.co/npm/redbox.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/redbox/)
+
+## Attention
+
 Used `superagent` for api requests
+
+
+## Install
 
 ```javascript
 npm install --save redbox
 ```
+
+
+## Usage
 
 ```javascript
 import { createAction, createActions, createStore, createReducers }
