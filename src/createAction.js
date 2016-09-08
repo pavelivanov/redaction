@@ -13,13 +13,11 @@ const isFn = (key) => typeof key == 'function'
 const mergeOptions = (defaults, opt) => {
   const options = merge(defaults, opt)
 
-  if ('params' in options) {
-    for (const key in options) {
-      if (!options.hasOwnProperty(key)) continue
+  for (const key in options) {
+    if (!options.hasOwnProperty(key)) continue
 
-      if (!isReserved(key) && isFn(options[key])) {
-        options[key] = options[key](options.params)
-      }
+    if (!isReserved(key) && isFn(options[key])) {
+      options[key] = options[key](options.params || {})
     }
   }
 
