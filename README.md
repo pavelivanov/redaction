@@ -2,7 +2,7 @@
   <img src="./images/redbox-small-logo.png" height="70" />
 </p>
 
-### simple action creation without string constants and less magic
+### Simple action creation without string constants and less magic
 
 [![Npm Version](https://badge.fury.io/js/redbox.svg)](https://www.npmjs.com/package/redbox)
 [![Month Downloads](https://img.shields.io/npm/dm/redbox.svg)](http://npm-stat.com/charts.html?package=redbox)
