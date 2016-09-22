@@ -8,8 +8,6 @@
 [![Month Downloads](https://img.shields.io/npm/dm/redbox.svg)](http://npm-stat.com/charts.html?package=redbox)
 [![Npm Licence](https://img.shields.io/npm/l/redbox.svg)](https://www.npmjs.com/package/redbox)
 
-[![NPM](https://nodei.co/npm/redbox.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/redbox/)
-
 
 ## Install
 
@@ -223,8 +221,6 @@ import store from 'created-store'
 
 export default createActions(actions, store.dispatch)
 ```
-
----
 
 
 ## Example
