@@ -11,6 +11,13 @@
 [![NPM](https://nodei.co/npm/redbox.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/redbox/)
 
 
+## Install
+
+```bash
+npm install --save redbox
+```
+
+
 ## Overview
 
 You still using ugly way of creation actions and reducers, don't you? Smth like this:
@@ -84,13 +91,6 @@ export const addTODO = createAction((state, payload) => {
 ## Attention
 
 **Redbox** uses [**superagent**](https://visionmedia.github.io/superagent/) for API requests
-
-
-## Install
-
-```bash
-npm install --save redbox
-```
 
 
 ## Usage
