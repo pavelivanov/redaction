@@ -1,4 +1,8 @@
 const apiAction = (state = {}, { type, meta, payload }) => {
+  if (typeof meta.modifyState == 'function') {
+    return meta.modifyState(state) || state
+  }
+
   if (meta.subset) {
     const newState = Object.assign({}, state)
 
