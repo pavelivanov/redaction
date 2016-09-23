@@ -29,8 +29,8 @@ const createResponseHandler = ({ options, dispatch }) => {
 
     let result = res.body
     
-    if (typeof options.modifyResult == 'function') {
-      result = options.modifyResult(res)
+    if (typeof options.modifyResponse == 'function') {
+      result = options.modifyResponse(res)
     }
 
     dispatch({
