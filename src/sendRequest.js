@@ -27,9 +27,15 @@ const createResponseHandler = ({ options, dispatch }) => {
       return
     }
 
+    let result = res.body
+    
+    if (typeof options.modifyResult == 'function') {
+      result = options.modifyResult(res)
+    }
+
     dispatch({
       type: 'success',
-      payload: res.body,
+      payload: result,
       meta: options
     })
 

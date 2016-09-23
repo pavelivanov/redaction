@@ -5,6 +5,7 @@ import merge from 'deepmerge'
 const reserved = [
   'onError',
   'onResponse',
+  'modifyResult',
 ]
 
 const isReserved = (key) => reserved.indexOf(key) >= 0
