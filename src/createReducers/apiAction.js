@@ -1,6 +1,6 @@
 const apiAction = (state = {}, { type, meta, payload }) => {
   if (typeof meta.modifyState == 'function') {
-    return meta.modifyState(state) || state
+    return meta.modifyState(state, meta.params) || state
   }
 
   if (meta.subset) {

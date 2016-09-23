@@ -30,7 +30,7 @@ const createResponseHandler = ({ options, dispatch }) => {
     let result = res.body
     
     if (typeof options.modifyResponse == 'function') {
-      result = options.modifyResponse(res) || res.body
+      result = options.modifyResponse(res, options.params) || res.body
     }
 
     dispatch({
