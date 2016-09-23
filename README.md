@@ -78,7 +78,13 @@ export const initialState = {
 }
 
 export const addTODO = createAction((state, payload) => {
-  return { ...state, TODO: { ...state.TODO, payload } }
+  return { 
+    ...state, 
+    TODO: [ 
+      ...state.TODO, 
+      payload 
+    ] 
+  }
 })
 ```
 
