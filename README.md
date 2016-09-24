@@ -103,11 +103,37 @@ export const addTODO = createAction((state, payload) => {
 import { createAction, createActions, createStore, createReducers }
 ```
 
-###`createAction(requestParams <Object> | reducer <Function>)`
+###`createAction(options <Object> | reducer <Function>)`
 
-To create request action pass params object as argument.
-Returns an action for send requests with same argument, so that
-you can override previously defined
+1) If pass function reducer will be created.
+2) If pass object `createAction` will create request method. Result of calling `createAction` is new method,
+which receive same options as `createAction`, so previous options can be overridden.
+
+name | type | description
+---- | ---- | -----------
+params | Object | Any of the options key may be a function, in this case one of the arguments of this function is the object params. Exceptions are onResponse and onError
+endpoint | String or Function | Request URL.
+subset | String or Function | Key name in state. Full path is state will be `FILE_NAME`.`subset`
+modifyResponse | Function | Has 2 arguments: server `response` and `params`. You need to pass the return data - `response.body`
+modifyState | Function | Has 2 arguments: `state` and `params`
+onResponse | Function | Called while request is successfully. Has one argument: server `response`
+onError | Function | Called while request is failed. Has two arguments: response `error` and server `response`
+
+**endpoint** function example:
+
+```javascript
+export const getFeed = createAction({
+  endpoint: ({ userId }) => `/api/users/${userId}/posts`,
+  method: 'GET'
+})
+
+getFeed({
+  params: {
+    userId: 100
+  }
+})
+```
+
 
 Params available to use:
 
