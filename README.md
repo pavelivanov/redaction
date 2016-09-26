@@ -1,5 +1,5 @@
 <p>
-  <img src="./images/redaction-small-logo.png" height="70" />
+  <img src="./images/redaction-logo.png" height="75" />
 </p>
 
 ### Redux action creation made simple
