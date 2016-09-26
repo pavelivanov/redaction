@@ -1,23 +1,18 @@
 <p>
-  <img src="./images/redbox-small-logo.png" height="70" />
+  <img src="./images/redaction-small-logo.png" height="70" />
 </p>
 
 ### Redux action creation made simple
 
-[![Npm Version](https://badge.fury.io/js/redbox.svg)](https://www.npmjs.com/package/redbox)
-[![Month Downloads](https://img.shields.io/npm/dm/redbox.svg)](http://npm-stat.com/charts.html?package=redbox)
-[![Npm Licence](https://img.shields.io/npm/l/redbox.svg)](https://www.npmjs.com/package/redbox)
+[![Npm Version](https://badge.fury.io/js/redaction.svg)](https://www.npmjs.com/package/redaction)
+[![Month Downloads](https://img.shields.io/npm/dm/redaction.svg)](http://npm-stat.com/charts.html?package=redaction)
+[![Npm Licence](https://img.shields.io/npm/l/redaction.svg)](https://www.npmjs.com/package/redaction)
 
-=========================================================================
-
-# This library was renamed! Use [**redaction**](https://www.npmjs.com/package/redaction) instead!
-
-=========================================================================
 
 ## Install
 
 ```bash
-npm install --save redbox
+npm install --save redaction
 ```
 
 
@@ -73,10 +68,10 @@ export default (state = initialState, action) => {
 
 #### Stop it !!!
 
-Now, with **Redbox** you can do same like this:
+Now, with **Redaction** you can do same like this:
 
 ```javascript
-import { createAction } from 'redbox'
+import { createAction } from 'redaction'
 
 export const initialState = {
  TODO: []
@@ -99,7 +94,7 @@ export const addTODO = createAction((state, payload) => {
 
 ## Attention
 
-**Redbox** uses [**superagent**](https://visionmedia.github.io/superagent/) for API requests
+**Redaction** uses [**superagent**](https://visionmedia.github.io/superagent/) for API requests
 
 
 ## Usage
@@ -156,7 +151,7 @@ Check [superagent docs](http://visionmedia.github.io/superagent/) for more infor
 
 
 ```javascript
-import { createAction } from 'redbox'
+import { createAction } from 'redaction'
 
 export const getPosts = createAction({
   endpoint: '/api/posts',
@@ -180,7 +175,7 @@ Will execute dispatches:
 To create simple reducer pass function as argument
 
 ```javascript
-import { createAction } from 'redbox'
+import { createAction } from 'redaction'
 
 export const setLocale = createAction((state, payload) => {
   return { ...state, locale: payload }
@@ -197,7 +192,7 @@ and export
 
 
 ```javascript
-import { createAction } from 'redbox'
+import { createAction } from 'redaction'
 
 export const initialState = {
   locale: 'ru',
@@ -218,7 +213,7 @@ Accepts all actions you create as argument and returns object of reducers
 to use in `createStore`
 
 ```javascript
-import { createReducers } from 'redbox'
+import { createReducers } from 'redaction'
 import actions from 'my-actions'
 
 export default createReducers(actions)
@@ -234,7 +229,7 @@ to pass `initialState`, `reducers`, `middlewares`, `enhancers`.
 There is `redux-thunk` middleware and `window.devToolsExtension` enhancer inside
 
 ```javascript
-import { createStore, createReducers } from 'redbox'
+import { createStore, createReducers } from 'redaction'
 import reducers from 'created-reducers'
 
 const initialState = {}
@@ -252,7 +247,7 @@ export default store
 Accepts all actions you create and dispatch from created store. Returns dispatched actions
 
 ```javascript
-import { createActions } from 'redbox'
+import { createActions } from 'redaction'
 import actions from 'my-actions'
 import store from 'created-store'
 
@@ -264,7 +259,7 @@ export default createActions(actions, store.dispatch)
 
 #### `actions/posts.js`
 ```javascript
-import { createAction } from 'redbox'
+import { createAction } from 'redaction'
 
 export const getAll = createAction.request({
   endpoint: '/api/posts',
@@ -274,7 +269,7 @@ export const getAll = createAction.request({
 
 #### `actions/ui.js`
 ```javascript
-import { createAction } from 'redbox'
+import { createAction } from 'redaction'
 
 export const initialState = {
   locale: 'en'
@@ -288,7 +283,7 @@ export const setLocale = createAction((state, payload) => {
 #### `core/store.js`
 
 ```javascript
-import { createStore, createReducer } from 'redbox'
+import { createStore, createReducer } from 'redaction'
 import actions from 'my-actions'
 
 const reducer = createReducer(actions)
@@ -305,7 +300,7 @@ export default store
 #### `core/actions.js`
 
 ```javascript
-import { createActions } from 'redbox'
+import { createActions } from 'redaction'
 import actions from 'actions'
 import store from 'core/store'
 
