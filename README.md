@@ -8,6 +8,11 @@
 [![Month Downloads](https://img.shields.io/npm/dm/redbox.svg)](http://npm-stat.com/charts.html?package=redbox)
 [![Npm Licence](https://img.shields.io/npm/l/redbox.svg)](https://www.npmjs.com/package/redbox)
 
+=========================================================================
+
+# This library was renamed! Use [**redaction**](https://www.npmjs.com/package/redaction) instead!
+
+=========================================================================
 
 ## Install
 
