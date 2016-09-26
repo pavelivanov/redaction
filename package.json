@@ -1,6 +1,6 @@
 {
   "name": "redbox",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Simple actions creator without string constants",
   "homepage": "https://github.com/grammka/redbox#readme",
   "author": "Pavel Ivanov (grammka@gmail.com)",
@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "deepmerge": "^0.2.10",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0",
     "superagent": "^2.1.0"
   },
   "devDependencies": {
