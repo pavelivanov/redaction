@@ -1,12 +1,21 @@
-# Redux Todos Example
+# RedAction Todos Example
 
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app).
+
+
+## Start
+
+Download this example or whole project and move to example directory.
+
+You need to install global dependency:
+
+### `npm install -g react-scripts`
+
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm install -g react-scripts`
 ### `npm start`
 
 Runs the app in the development mode.<br>

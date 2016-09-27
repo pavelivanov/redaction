@@ -1,5 +1,5 @@
 <p>
-  <img src="./images/redaction-logo.png" height="64" />
+  <img src="./images/redaction-logo-big.png" height="70" />
 </p>
 
 ### Redux action creation made simple
@@ -97,7 +97,7 @@ export const addTODO = createAction((state, payload) => {
 **Redaction** uses [**superagent**](https://visionmedia.github.io/superagent/) for API requests
 
 
-## Usage
+## Overview
 
 ```javascript
 import { createAction, createActions, createStore, createReducers }
@@ -255,7 +255,7 @@ export default createActions(actions, store.dispatch)
 ```
 
 
-## Example
+## Usage
 
 #### `actions/posts.js`
 ```javascript
@@ -341,3 +341,8 @@ Store content will be:
   }
 }
 ```
+
+
+## Example
+
+To run example check [this page](https://github.com/pavelivanov/redaction/tree/master/example)
