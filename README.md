@@ -96,11 +96,21 @@ export const addTODO = createAction((state, payload) => {
 
 **Redaction** uses [**superagent**](https://visionmedia.github.io/superagent/) for API requests
 
+#### Configure request
+
+```javascript
+import { configure } from 'redaction'
+
+configure({
+  baseURL: 'https://mysite.com/api/',
+})
+```
+
 
 ## Overview
 
 ```javascript
-import { createAction, createActions, createStore, createReducers }
+import { createAction, createActions, createStore, createReducers } from 'redaction'
 ```
 
 ###`createAction(options <Object> | reducer <Function>)`
@@ -115,7 +125,6 @@ params | Object | Any of the options key may be a function, in this case one of 
 endpoint | String or Function | Request URL.
 subset | String or Function | Key name in state. Full path is state will be `FILE_NAME`.`subset`
 modifyResponse | Function | Has 2 arguments: server `response` and `params`. You need to pass the return data - `response.body`
-modifyState | Function | Has 2 arguments: `state` and `params`
 onResponse | Function | Called while request is successfully. Has one argument: server `response`
 onError | Function | Called while request is failed. Has two arguments: response `error` and server `response`
 
@@ -138,7 +147,6 @@ getFeed({
 Params available to use:
 
 - `subset` - key where data will be stored
-- `strategy` - what to do with data `merge | rewrite (defaults)`
 - `endpoint`
 - `method`
 - `headers`

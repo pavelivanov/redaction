@@ -1,4 +1,5 @@
 import request from 'superagent'
+import { resolveEndpoint } from './helpers'
 
 
 const createResponseHandler = ({ options, dispatch }) => {
@@ -52,7 +53,7 @@ const sendRequest = ({ options, dispatch }) => {
     meta: options
   })
 
-  const req = request[options.method.toLowerCase()](options.endpoint)
+  const req = request[options.method.toLowerCase()](resolveEndpoint(options.endpoint))
 
   if (options.headers) {
     req.set(options.headers)
