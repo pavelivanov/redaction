@@ -1,4 +1,4 @@
-import { config } from './configure'
+import { config } from '../configure'
 
 
 const resolveEndpoint = (endpoint) => {
