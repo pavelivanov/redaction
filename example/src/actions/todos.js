@@ -1,4 +1,4 @@
-import { createAction } from 'redaction'
+import { createAction } from '../../../lib'
 
 
 let nextTodoId = 0

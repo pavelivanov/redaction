@@ -15,7 +15,6 @@ const devtools = typeof window !== 'undefined' && window.devToolsExtension ? win
 
 
 export default ({ initialState = {}, reducers = {}, middlewares = [], enhancers = [] }) => {
-
   const finalMiddlewares = [
     ...defaultMiddlewares,
     ...middlewares
@@ -37,5 +36,4 @@ export default ({ initialState = {}, reducers = {}, middlewares = [], enhancers 
   )
 
   return store
-
 }

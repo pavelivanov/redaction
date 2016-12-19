@@ -1,4 +1,42 @@
-const apiAction = (state = {}, { type, meta, payload }) => {
+// TODO write test
+/*
+
+  apiAction({}, {
+    status: 'request',
+    meta: { subset: 'list' },
+  })
+
+  => { list: { pending: true, data: null, error: null } }
+
+
+  apiAction({}, {
+    status: 'success',
+    meta: { subset: 'list' },
+    payload: [ 'foo', 'bar' ],
+  })
+
+  => { list: { pending: false, data: [ 'foo', 'bar' ], error: null } }
+
+
+  apiAction({}, {
+    status: 'request',
+    meta: { subset: 'list' },
+  })
+
+  => { list: { pending: true, data: [ 'foo', 'bar' ], error: null } }
+
+
+  apiAction({}, {
+    status: 'failure',
+    meta: { subset: 'list' },
+    payload: { message: 'something goes wrong' },
+  })
+
+  => { list: { pending: false, data: [ 'foo', 'bar' ], error: { message: 'something goes wrong' } } }
+
+ */
+
+const apiAction = (state = {}, { status, meta, payload }) => {
   if (meta.subset) {
     const newState = { ...state }
 
@@ -10,13 +48,13 @@ const apiAction = (state = {}, { type, meta, payload }) => {
       }
     }
 
-    if (type == 'request') {
+    if (status == 'request') {
       newState[meta.subset].pending = true
     }
-    else if (type == 'success') {
+    else if (status == 'success') {
       newState[meta.subset].data = payload
     }
-    else if (type == 'failure') {
+    else if (status == 'failure') {
       newState[meta.subset].pending = false
       newState[meta.subset].error = payload
     }

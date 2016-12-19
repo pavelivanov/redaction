@@ -1,4 +1,4 @@
-import { createStore, createReducers } from 'redaction'
+import { createStore, createReducers } from '../../../lib'
 import actions from '../actions'
 
 

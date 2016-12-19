@@ -2,7 +2,7 @@ import request from 'superagent'
 import { resolveEndpoint } from './helpers'
 
 
-const createResponseHandler = ({ options, dispatch }) => {
+const createResponseHandler = ({ options, typedDispatch }) => {
   const debug = `${options.method.toUpperCase()} ${options.endpoint}`
 
   return (err, res) => {
@@ -15,10 +15,10 @@ const createResponseHandler = ({ options, dispatch }) => {
     }
 
     if (err) {
-      dispatch({
-        type: 'failure',
+      typedDispatch({
+        status: 'failure',
         payload: err,
-        meta: options
+        meta: options,
       })
 
       if (typeof options.onError == 'function') {
@@ -34,10 +34,10 @@ const createResponseHandler = ({ options, dispatch }) => {
       result = options.modifyResponse(res, options.params) || res.body
     }
 
-    dispatch({
-      type: 'success',
+    typedDispatch({
+      status: 'success',
       payload: result,
-      meta: options
+      meta: options,
     })
 
     if (typeof options.onResponse == 'function') {
@@ -46,11 +46,10 @@ const createResponseHandler = ({ options, dispatch }) => {
   }
 }
 
-
-const sendRequest = ({ options, dispatch }) => {
-  dispatch({
-    type: 'request',
-    meta: options
+const sendRequest = ({ options, typedDispatch }) => {
+  typedDispatch({
+    status: 'request',
+    meta: options,
   })
 
   const req = request[options.method.toLowerCase()](resolveEndpoint(options.endpoint))
@@ -86,7 +85,17 @@ const sendRequest = ({ options, dispatch }) => {
     req.auth(...options.auth)
   }
 
-  req.end(createResponseHandler({ options, dispatch }))
+  let result
+
+  req.end((err, res) => {
+    result = new Promise((fulfill, reject) => {
+      const handler = createResponseHandler({ options, typedDispatch })(err, res)
+
+
+    })
+  })
+
+  return result
 }
 
 export default sendRequest

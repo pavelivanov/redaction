@@ -28,10 +28,10 @@ const mergeOptions = (defaults, opt) => {
 
 
 const createRequestAction = (defaults = {}) => {
-  const action = (dispatch) => (opts = {}) => {
+  const action = (typedDispatch) => (opts = {}) => {
     const options = mergeOptions(defaults, opts)
 
-    sendRequest({ options, dispatch })
+    return sendRequest({ options, typedDispatch })
   }
 
   action.type = 'apiAction'
@@ -40,7 +40,7 @@ const createRequestAction = (defaults = {}) => {
 }
 
 const createReducerAction = (reducer) => {
-  const action = (dispatch) => (payload) => dispatch({ reducer, payload })
+  const action = (typedDispatch) => (payload) => typedDispatch({ reducer, payload })
 
   action.type = 'reducerAction'
 

@@ -16,8 +16,8 @@ const createReducer = (actions) => {
       if (methodName == 'default') continue
       if (methodName == 'initialState') continue
 
-      const action      = actions[actionNode][methodName]
-      const reducerKey  = `${actionNode}.${methodName}`
+      const action  = actions[actionNode][methodName]
+      const type    = `${actionNode}.${methodName}`
       let reducer
 
       if (action.type == 'apiAction') {
@@ -27,21 +27,19 @@ const createReducer = (actions) => {
         reducer = reducerAction
       }
 
-      nodeReducers[reducerKey] = reducer
+      nodeReducers[type] = reducer
     }
 
     reducers[actionNode] = (state = initialState, { type, params }) => {
-      if (!(type in nodeReducers)) {
-        return state
+      if (type in nodeReducers) {
+        return nodeReducers[type](state, params)
       }
 
-      return nodeReducers[type](state, params)
+      return state
     }
   }
 
   return reducers
 }
 
-
 export default createReducer
-
