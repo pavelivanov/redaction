@@ -1,6 +1,6 @@
 {
   "name": "redaction",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "Simple actions creator without string constants",
   "homepage": "https://github.com/grammka/redbox#readme",
   "author": "Pavel Ivanov (grammka@gmail.com)",

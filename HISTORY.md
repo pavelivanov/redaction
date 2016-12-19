@@ -1,3 +1,7 @@
+# 2.2.0 (2016-12-20)
+
+  * Code clean up. Last commit in 2.* version.
+
 # 2.1.1, 2.1.2 (2016-12-18)
 
   * Fix errors
