@@ -1,20 +1,23 @@
 {
   "name": "redaction",
-  "version": "2.2.0",
-  "description": "Simple actions creator without string constants",
-  "homepage": "https://github.com/grammka/redbox#readme",
-  "author": "Pavel Ivanov (grammka@gmail.com)",
+  "version": "3.0.0",
+  "description": "Reducers without constants and dispatch",
+  "homepage": "https://github.com/pavelivanov/redaction#readme",
+  "author": "Pavel Ivanov <grammka@gmail.com> (https://github.com/pavelivanov)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grammka/redbox.git"
+    "url": "git+https://github.com/pavelivanov/redaction.git"
   },
   "keywords": [
+    "redaction",
     "react",
     "redux",
     "action",
     "reducer",
-    "creator"
+    "creator",
+    "constants",
+    "dispatch"
   ],
   "main": "./lib",
   "scripts": {
@@ -24,10 +27,8 @@
     "build": "npm run clean && babel ./src --out-dir ./lib"
   },
   "dependencies": {
-    "deepmerge": "^0.2.10",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0",
-    "superagent": "^2.1.0"
+    "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.11.4",

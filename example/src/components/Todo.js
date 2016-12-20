@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import actions from '../core/actions'
+import actions from '../actions'
 
 const Todo = ({ id, completed, text }) => (
   <li

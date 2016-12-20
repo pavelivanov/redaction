@@ -1,13 +1,12 @@
-import { createStore, createReducers } from '../../../lib'
-import actions from '../actions'
+import { createStore, combineReducers } from '../../../lib'
+import reducers from '../reducers'
 
 
-const reducers = createReducers(actions)
+const combinedReducers = combineReducers(reducers)
 const initialState = {}
 
-
 const store = createStore({
-  reducers,
+  reducers: combinedReducers,
   initialState
 })
 
