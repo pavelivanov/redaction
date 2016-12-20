@@ -1,4 +1,9 @@
-# 2.2.0 (2016-12-20)
+# 3.0.0 (2016-12-20)
+
+  * Completely rework redaction library - remove action creators, create reducer wrappers with closure dispatching.
+  * Update Readme.md
+
+# 2.2.0 (2016-12-19)
 
   * Code clean up. Last commit in 2.* version.
 
