@@ -57,7 +57,7 @@ export const put = (state, payload) => {
 import { createStore, combineReducers } from 'redaction'
 import reducers from 'reducers'
 
-const combinedReducers = combineReducers(actions)
+const combinedReducers = combineReducers(reducers)
 const initialState = {}
 
 const store = createStore({
