@@ -1,3 +1,7 @@
+# 2.2.1 (2016-12-24)
+
+  * Fix configure method
+
 # 2.2.0 (2016-12-20)
 
   * Code clean up. Last commit in 2.* version.
