@@ -1,3 +1,7 @@
+# 2.2.3 (2016-12-24)
+
+  * Add fresh option to reload store data on request
+
 # 2.2.1 (2016-12-24)
 
   * Fix configure method
