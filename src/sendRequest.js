@@ -85,17 +85,7 @@ const sendRequest = ({ options, typedDispatch }) => {
     req.auth(...options.auth)
   }
 
-  let result
-
-  req.end((err, res) => {
-    result = new Promise((fulfill, reject) => {
-      const handler = createResponseHandler({ options, typedDispatch })(err, res)
-
-
-    })
-  })
-
-  return result
+  return req.end(createResponseHandler({ options, typedDispatch }))
 }
 
 export default sendRequest

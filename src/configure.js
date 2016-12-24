@@ -9,7 +9,7 @@ const configure = (options) => {
 
   config = {
     ...config,
-    options
+    ...options,
   }
 }
 
