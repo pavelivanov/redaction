@@ -49,6 +49,9 @@ const apiAction = (state = {}, { status, meta, payload }) => {
     }
 
     if (status == 'request') {
+      if (meta.fresh) {
+        newState[meta.subset].data = null
+      }
       newState[meta.subset].pending = true
     }
     else if (status == 'success') {
