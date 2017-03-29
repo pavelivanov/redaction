@@ -1,3 +1,10 @@
+# UNRELEASED
+
+# 3.2.0 (2017-03-29)
+
+  * Add connect method to link state to components
+  * Add immutable react PropTypes
+
 # 3.1.0 (2017-03-29)
 
   * Add Immutable.js
