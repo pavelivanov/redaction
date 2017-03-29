@@ -2,7 +2,7 @@
   <img src="./images/redaction-logo-big.png" height="70" />
 </p>
 
-### Redux action creation made simple
+### Redux reducers without constants and dispatching!
 
 [![Npm Version](https://badge.fury.io/js/redaction.svg)](https://www.npmjs.com/package/redaction)
 [![Month Downloads](https://img.shields.io/npm/dm/redaction.svg)](http://npm-stat.com/charts.html?package=redaction)
@@ -57,11 +57,10 @@ export const put = (state, payload) => {
 import { createStore, combineReducers } from 'redaction'
 import reducers from 'reducers'
 
-const combinedReducers = combineReducers(reducers)
 const initialState = {}
 
 const store = createStore({
-  reducer: combinedReducers,
+  reducers,
   initialState,
 })
 
