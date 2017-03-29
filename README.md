@@ -21,6 +21,7 @@ npm install --save redaction
 > The README reflects redaction v3.x, webpack v2.x [documentation can be found here](https://github.com/pavelivanov/redaction/tree/v2.2.0).
 
 Redaction is wrapper for reducers. The main purpose is to refuse from using constants and dispatch method in code.
+Inside uses Immutable.js
 
 
 ## Usage
@@ -54,10 +55,11 @@ export const put = (state, payload) => {
 #### `core/store.js`
 
 ```js
+import { Map } from 'immutable'
 import { createStore, combineReducers } from 'redaction'
 import reducers from 'reducers'
 
-const initialState = {}
+const initialState = Map({})
 
 const store = createStore({
   reducers,
