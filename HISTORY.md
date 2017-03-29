@@ -1,3 +1,7 @@
+# 3.1.0 (2017-03-29)
+
+  * Add Immutable.js
+
 # 3.0.0 (2016-12-20)
 
   * Completely rework redaction library - remove action creators, create reducer wrappers with closure dispatching.
