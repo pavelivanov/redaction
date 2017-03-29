@@ -26,7 +26,7 @@ Redaction is wrapper for reducers. The main purpose is to refuse from using cons
 ## Usage
 
 #### `actions/users.js`
-```javascript
+```js
 import reducers from 'core/reducers'
 
 export const getAll = () => {
@@ -41,7 +41,7 @@ export const getAll = () => {
 ```
 
 #### `reducers/users.js`
-```javascript
+```js
 export const initialState = {
   list: [],
 }
@@ -53,7 +53,7 @@ export const put = (state, payload) => {
 
 #### `core/store.js`
 
-```javascript
+```js
 import { createStore, combineReducers } from 'redaction'
 import reducers from 'reducers'
 
@@ -70,7 +70,7 @@ export default store
 
 #### `core/reducers.js`
 
-```javascript
+```js
 import { wrapReducers } from 'redaction'
 import reducers from 'reducers'
 import store from 'core/store'
@@ -80,13 +80,49 @@ export default wrapReducers(reducers, store.dispatch)
 
 #### `components/Posts.js`
 
-```javascript
+```js
 import React from 'react'
 import { users } from 'actions'
 
 export default class Posts extends React.Component {
   componentWillMount() {
     users.getAll()
+  }
+}
+```
+
+
+## Features
+
+#### Connect
+
+There is sugar to connect state to components nifty:
+
+```js
+import React, { Component } from 'react'
+import { connect } from 'redaction'
+
+@connect({
+  todos: 'todos.list',
+})
+export default class TodosList extends Component {}
+```
+
+#### PropTypes
+
+```js
+import React from 'react'
+import { PropTypes } from 'redaction'
+
+export default class TodosList extends Component {
+  static propTypes = {
+    todos: PropTypes.listOf(
+      PropTypes.contains({
+        id: PropTypes.number.isRequired,
+        text: PropTypes.string.isRequired,
+        completed: PropTypes.bool.isRequired,
+      })
+    )
   }
 }
 ```
