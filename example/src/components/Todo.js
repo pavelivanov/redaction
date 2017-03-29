@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import { PropTypes } from '../../../lib'
 import actions from '../actions'
 
 
@@ -14,7 +15,7 @@ const Todo = ({ todo }) => (
 )
 
 Todo.propTypes = {
-  todo: PropTypes.object.isRequired,
+  todo: PropTypes.map.isRequired,
 }
 
 export default Todo

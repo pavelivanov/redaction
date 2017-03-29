@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import { PropTypes } from '../../../lib'
 import Todo from './Todo'
 
 
@@ -16,7 +17,7 @@ const TodoList = ({ todos }) => (
 )
 
 TodoList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.shape({
+  todos: PropTypes.listOf(PropTypes.contains({
     id: PropTypes.number.isRequired,
     completed: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired
