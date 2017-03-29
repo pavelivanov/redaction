@@ -31,7 +31,7 @@ Inside uses Immutable.js
 import reducers from 'core/reducers'
 
 export const getAll = () => {
-  request({
+  fetch({
     endpoint: '/api/users',
     method: 'GET'
   })
@@ -43,13 +43,14 @@ export const getAll = () => {
 
 #### `reducers/users.js`
 ```js
-export const initialState = {
-  list: [],
-}
+import { fromJS } from 'immutable'
 
-export const put = (state, payload) => {
-  return { ...state, list: payload }
-}
+export const initialState = fromJS({
+  list: [],
+})
+
+export const put = (state, payload) => 
+  state.update('list', list => list.push(payload))
 ```
 
 #### `core/store.js`
