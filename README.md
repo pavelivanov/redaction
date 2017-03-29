@@ -101,5 +101,5 @@ To run example check [this page](https://github.com/pavelivanov/redaction/tree/m
 
 - [ ] Write tests
 - [x] Add ImmutableJS
-- [ ] Add `connect` sugar with string paths
+- [x] Add `connect` sugar with string paths
 - [ ] Add actionWrapper to call dispatch `pending` and `error` requests in shadow
