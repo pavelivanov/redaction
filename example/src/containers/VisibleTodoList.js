@@ -1,4 +1,4 @@
-import { connect } from 'react-redux'
+import { connect } from '../../../lib'
 import TodoList from '../components/TodoList'
 
 
@@ -15,15 +15,11 @@ const getVisibleTodos = (todos, filter) => {
   }
 }
 
-const mapStateToProps = (state) => ({
-  todos: getVisibleTodos(
+const VisibleTodoList = connect({
+  todos: state => getVisibleTodos(
     state.getIn(['todos', 'items']),
     state.getIn(['todos', 'visibilityFilter'])
   )
-})
-
-const VisibleTodoList = connect(
-  mapStateToProps
-)(TodoList)
+})(TodoList)
 
 export default VisibleTodoList
