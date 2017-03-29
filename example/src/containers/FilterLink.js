@@ -2,8 +2,9 @@ import { connect } from 'react-redux'
 import actions from '../actions'
 import Link from '../components/Link'
 
+
 const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.todos.visibilityFilter
+  active: ownProps.filter === state.getIn(['todos', 'visibilityFilter'])
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

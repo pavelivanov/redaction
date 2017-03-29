@@ -1,10 +1,14 @@
+import { Map } from 'immutable'
+import { combineReducers as immutableCombine } from 'redux-immutablejs'
+
+
 const combineReducers = (reducers) => {
   const combinedReducers = {}
 
   for (let nodeName in reducers) {
     if (!reducers.hasOwnProperty(nodeName)) continue
 
-    const initialState = 'initialState' in reducers[nodeName] ? reducers[nodeName].initialState : {}
+    const initialState = 'initialState' in reducers[nodeName] ? reducers[nodeName].initialState : Map({})
     const nodeReducers = {}
 
     for (let methodName in reducers[nodeName]) {
@@ -27,7 +31,7 @@ const combineReducers = (reducers) => {
     }
   }
 
-  return combinedReducers
+  return immutableCombine(combinedReducers)
 }
 
 export default combineReducers

@@ -1,20 +1,20 @@
 import React, { PropTypes } from 'react'
 import actions from '../actions'
 
-const Todo = ({ id, completed, text }) => (
+
+const Todo = ({ todo }) => (
   <li
-    onClick={() => actions.todos.toggleItem(id)}
+    onClick={() => actions.todos.toggleItem(todo.get('id'))}
     style={{
-      textDecoration: completed ? 'line-through' : 'none'
+      textDecoration: todo.get('completed') ? 'line-through' : 'none'
     }}
   >
-    {text}
+    {todo.get('text')}
   </li>
 )
 
 Todo.propTypes = {
-  completed: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired
+  todo: PropTypes.object.isRequired,
 }
 
 export default Todo
