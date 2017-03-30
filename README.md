@@ -141,3 +141,4 @@ To run example check [this page](https://github.com/pavelivanov/redaction/tree/m
 - [x] Add ImmutableJS
 - [x] Add `connect` sugar with string paths
 - [ ] Add actionWrapper to call dispatch `pending` and `error` requests in shadow
+- [ ] Test workflow with ReduxForm and ReduxSaga
