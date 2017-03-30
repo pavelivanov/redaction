@@ -1,5 +1,11 @@
 # UNRELEASED
 
+# 3.3.0 (2017-03-30)
+
+  * Fix combining reducers, change logic of usage in createStore. Beware
+  * Update todos example
+  * Add redux-form example
+
 # 3.2.0 (2017-03-29)
 
   * Add connect method to link state to components
