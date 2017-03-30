@@ -1,12 +1,14 @@
 import { Map } from 'immutable'
-import { createStore } from '../../../lib'
+import { createStore, combineReducers } from '../../../lib'
 import reducers from '../reducers'
 
 
 const initialState = Map({})
 
 const store = createStore({
-  reducers,
+  reducers: {
+    ...combineReducers(reducers),
+  },
   initialState,
 })
 
