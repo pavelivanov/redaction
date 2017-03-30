@@ -58,12 +58,16 @@ export const put = (state, payload) =>
 ```js
 import { Map } from 'immutable'
 import { createStore, combineReducers } from 'redaction'
+import { reducer as form } from 'redux-form/immutable'
 import reducers from 'reducers'
 
 const initialState = Map({})
 
 const store = createStore({
-  reducers,
+  reducers: {
+    ...combineReducers(reducers),
+    form,
+  },
   initialState,
 })
 
