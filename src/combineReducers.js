@@ -1,5 +1,4 @@
 import { Map } from 'immutable'
-import { combineReducers as immutableCombine } from 'redux-immutablejs'
 
 
 const combineReducers = (reducers) => {
@@ -31,7 +30,7 @@ const combineReducers = (reducers) => {
     }
   }
 
-  return immutableCombine(combinedReducers)
+  return combinedReducers
 }
 
 export default combineReducers
