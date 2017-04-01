@@ -1,5 +1,10 @@
 # UNRELEASED
 
+# 3.3.1 (2017-04-01)
+
+  * Add returning dispatch in connect method
+  * Add redux-auth-wrapper example
+
 # 3.3.0 (2017-03-30)
 
   * Fix combining reducers, change logic of usage in createStore. Beware
