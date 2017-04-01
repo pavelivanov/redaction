@@ -15,6 +15,7 @@ const wrapReducers = (reducers, dispatch) => {
       const dispatchedReducer = (payload) => dispatch({ type, payload })
 
       dispatchedReducers[nodeName][methodName] = dispatchedReducer
+      dispatchedReducers[nodeName][methodName].type = type
     }
   }
 
