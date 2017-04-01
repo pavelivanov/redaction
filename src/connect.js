@@ -46,6 +46,10 @@ const defaults = {
 export default (storeProps, props, options) => {
   const connector = connect(
     storeProps ? mapStateToProps(storeProps) : null,
+    dispatch => ({
+      dispatch,
+    }),
+    null,
     { ...defaults, ...options }
   )
   return (Component) => {

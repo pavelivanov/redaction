@@ -1,4 +1,4 @@
-import { connect } from '../../../lib'
+import { connect } from '../../../../lib'
 import TodoList from '../components/TodoList'
 
 

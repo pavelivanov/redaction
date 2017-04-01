@@ -1,4 +1,4 @@
-import { connect } from '../../../lib'
+import { connect } from '../../../../lib'
 import actions from '../actions'
 import Link from '../components/Link'
 

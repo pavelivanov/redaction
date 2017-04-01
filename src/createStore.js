@@ -21,7 +21,7 @@ export default ({
   initialState = Map(),
   reducers = {},
   middleware = [],
-  enhancers = []
+  enhancers = [],
 }) => {
   if (!Iterable.isIterable(initialState)) {
     throw new Error('Invalid initialState option')
@@ -29,7 +29,7 @@ export default ({
 
   const finalMiddleware = [
     ...defaultMiddleware,
-    ...middleware
+    ...middleware,
   ]
 
   const finalEnhancers = [
@@ -43,8 +43,8 @@ export default ({
     initialState,
     compose(
       applyMiddleware(...finalMiddleware),
-      ...finalEnhancers
-    )
+      ...finalEnhancers,
+    ),
   )
 
   return store

@@ -1,5 +1,5 @@
 import React from 'react'
-import { PropTypes } from '../../../lib'
+import { PropTypes } from '../../../../lib'
 import Todo from './Todo'
 
 

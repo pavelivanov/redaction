@@ -1,5 +1,5 @@
 import { Map } from 'immutable'
-import { createStore, combineReducers } from '../../../lib'
+import { createStore, combineReducers } from '../../../../lib'
 import reducers from '../reducers'
 
 

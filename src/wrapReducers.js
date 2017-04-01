@@ -1,4 +1,4 @@
-const createReducers = (reducers, dispatch) => {
+const wrapReducers = (reducers, dispatch) => {
   const dispatchedReducers = {}
 
   for (let nodeName in reducers) {
@@ -21,4 +21,4 @@ const createReducers = (reducers, dispatch) => {
   return dispatchedReducers
 }
 
-export default createReducers
+export default wrapReducers
