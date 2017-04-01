@@ -1,5 +1,9 @@
 # UNRELEASED
 
+# 3.3.2 (2017-04-01)
+
+  * Add `type` property to reducer wrappers. For example it can be used in redux-saga
+
 # 3.3.1 (2017-04-01)
 
   * Add returning dispatch in connect method
