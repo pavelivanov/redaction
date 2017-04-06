@@ -1,5 +1,9 @@
 # UNRELEASED
 
+# 3.3.3 (2017-04-06)
+
+  * Improve `connect` method. Add option to call it as `react-redux` does. Add info about options of call to README.md
+
 # 3.3.2 (2017-04-01)
 
   * Add `type` property to reducer wrappers. For example it can be used in redux-saga
