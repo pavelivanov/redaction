@@ -108,8 +108,17 @@ There is sugar to connect state to components nifty:
 import React, { Component } from 'react'
 import { connect } from 'redaction'
 
+// option 1
+@connect(state => ({
+  todos: state.getIn(['todos', 'list'])
+}))
+// option 2
 @connect({
   todos: 'todos.list',
+})
+// option 3
+@connect({
+  todos: (state) => state.getIn(['todos', 'list']),
 })
 export default class TodosList extends Component {}
 ```

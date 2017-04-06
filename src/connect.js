@@ -27,8 +27,12 @@ const resolve = (storeProps, state, ownProps) => {
   return resolved
 }
 
-const mapStateToProps = storeProps => (state, ownProps) =>
-  resolve(storeProps, state, ownProps)
+const mapStateToProps = storeProps => (state, ownProps) => {
+  if (typeof storeProps === 'function') {
+    return storeProps(state, ownProps)
+  }
+  return resolve(storeProps, state, ownProps)
+}
 
 const defaults = {
   pure: true,
