@@ -1,5 +1,9 @@
 # UNRELEASED
 
+# 3.3.4 (2017-04-06)
+
+  * Move Immutable PropTypes to separate key `immutable`
+
 # 3.3.3 (2017-04-06)
 
   * Improve `connect` method. Add option to call it as `react-redux` does. Add info about options of call to README.md
