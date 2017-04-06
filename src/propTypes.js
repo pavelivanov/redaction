@@ -4,5 +4,5 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 
 export default {
   ...PropTypes,
-  ...ImmutablePropTypes,
+  immutable: ImmutablePropTypes,
 }
