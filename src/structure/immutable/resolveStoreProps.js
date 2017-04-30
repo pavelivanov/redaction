@@ -1,1 +1,3 @@
-export default (state, path) => state.getIn(path.split('.'))
+const resolveStoreProps = (state, path) => state.getIn(path.split('.'))
+
+export default resolveStoreProps
