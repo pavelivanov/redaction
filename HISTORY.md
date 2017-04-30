@@ -1,5 +1,11 @@
 # UNRELEASED
 
+# 4.0.3 (2017-04-30)
+
+  * Rework module - split to plain and immutable versions
+  * Update examples for plain and immutable
+  * Update Readme
+
 # 3.3.4 (2017-04-06)
 
   * Move Immutable PropTypes to separate key `immutable`
