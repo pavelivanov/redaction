@@ -18,134 +18,18 @@ npm install --save redaction
 
 ## Introduction
 
-> The README reflects redaction v3.x, webpack v2.x [documentation can be found here](https://github.com/pavelivanov/redaction/tree/v2.2.0).
+> The README reflects redaction v4.x, 
+[v3.x documentation](https://github.com/pavelivanov/redaction/tree/v3), 
+[v2.x documentation](https://github.com/pavelivanov/redaction/tree/v2).
 
 Redaction is wrapper for reducers. The main purpose is to refuse from using constants and dispatch method in code.
-Inside uses Immutable.js
+There are Plain and Immutable versions.
 
 
-## Usage
+## Documentation
 
-#### `actions/users.js`
-```js
-import reducers from 'core/reducers'
-
-export const getAll = () => {
-  fetch({
-    endpoint: '/api/users',
-    method: 'GET'
-  })
-    .then((result) => {
-      reducers.users.put(result)
-    })
-}
-```
-
-#### `reducers/users.js`
-```js
-import { fromJS } from 'immutable'
-
-export const initialState = fromJS({
-  list: [],
-})
-
-export const put = (state, payload) => 
-  state.update('list', list => list.push(payload))
-```
-
-#### `core/store.js`
-
-```js
-import { Map } from 'immutable'
-import { createStore, combineReducers } from 'redaction'
-import { reducer as form } from 'redux-form/immutable'
-import reducers from 'reducers'
-
-const initialState = Map({})
-
-const store = createStore({
-  reducers: {
-    ...combineReducers(reducers),
-    form,
-  },
-  initialState,
-})
-
-export default store
-```
-
-#### `core/reducers.js`
-
-```js
-import { wrapReducers } from 'redaction'
-import reducers from 'reducers'
-import store from 'core/store'
-
-export default wrapReducers(reducers, store.dispatch)
-```
-
-#### `components/Posts.js`
-
-```js
-import React from 'react'
-import { users } from 'actions'
-
-export default class Posts extends React.Component {
-  componentWillMount() {
-    users.getAll()
-  }
-}
-```
-
-
-## Features
-
-#### Connect
-
-There is sugar to connect state to components nifty:
-
-```js
-import React, { Component } from 'react'
-import { connect } from 'redaction'
-
-// option 1
-@connect(state => ({
-  todos: state.getIn(['todos', 'list'])
-}))
-// option 2
-@connect({
-  todos: 'todos.list',
-})
-// option 3
-@connect({
-  todos: (state) => state.getIn(['todos', 'list']),
-})
-export default class TodosList extends Component {}
-```
-
-#### PropTypes
-
-```js
-import React from 'react'
-import { PropTypes } from 'redaction'
-
-export default class TodosList extends Component {
-  static propTypes = {
-    todos: PropTypes.listOf(
-      PropTypes.contains({
-        id: PropTypes.number.isRequired,
-        text: PropTypes.string.isRequired,
-        completed: PropTypes.bool.isRequired,
-      })
-    )
-  }
-}
-```
-
-
-## Example
-
-To run example check [this page](https://github.com/pavelivanov/redaction/tree/master/example)
+[Plain](https://github.com/pavelivanov/redaction/tree/master/docs/Plain.md)
+[Immutable](https://github.com/pavelivanov/redaction/tree/master/docs/Immutable.md)
 
 
 ## TODO
@@ -154,4 +38,4 @@ To run example check [this page](https://github.com/pavelivanov/redaction/tree/m
 - [x] Add ImmutableJS
 - [x] Add `connect` sugar with string paths
 - [ ] Add actionWrapper to call dispatch `pending` and `error` requests in shadow
-- [ ] Test workflow with ReduxForm and ReduxSaga
+- [x] Test workflow with ReduxForm and ReduxSaga

@@ -1,9 +1,9 @@
-import { applyMiddleware, compose, createStore } from 'redux'
-import { combineReducers as immutableCombine } from 'redux-immutablejs'
-import { Map, Iterable } from 'immutable'
-import thunk from 'redux-thunk'
-import { batchedSubscribe } from 'redux-batched-subscribe'
 import { unstable_batchedUpdates as batchedUpdates } from 'react-dom'
+import { applyMiddleware, compose, createStore as reduxCreateStore } from 'redux'
+import { batchedSubscribe } from 'redux-batched-subscribe'
+import { combineReducers } from 'redux-immutablejs'
+import thunk from 'redux-thunk'
+import { Map, Iterable } from 'immutable'
 
 
 const devTools = typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : (v) => v
@@ -16,8 +16,7 @@ const defaultEnhancers = [
   batchedSubscribe(batchedUpdates),
 ]
 
-
-export default ({
+const createStore = ({
   initialState = Map(),
   reducers = {},
   middleware = [],
@@ -38,8 +37,8 @@ export default ({
     devTools,
   ]
 
-  const store = createStore(
-    immutableCombine(reducers),
+  const store = reduxCreateStore(
+    combineReducers(reducers),
     initialState,
     compose(
       applyMiddleware(...finalMiddleware),
@@ -49,3 +48,5 @@ export default ({
 
   return store
 }
+
+export default createStore
