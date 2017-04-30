@@ -28,8 +28,8 @@ There are Plain and Immutable versions.
 
 ## Documentation
 
-[Plain](https://github.com/pavelivanov/redaction/tree/master/docs/Plain.md)
-[Immutable](https://github.com/pavelivanov/redaction/tree/master/docs/Immutable.md)
+- [Plain](https://github.com/pavelivanov/redaction/tree/master/docs/Plain.md)
+- [Immutable](https://github.com/pavelivanov/redaction/tree/master/docs/Immutable.md)
 
 
 ## TODO
