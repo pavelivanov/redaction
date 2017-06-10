@@ -17,11 +17,9 @@ export const getAll = () => {
 
 #### `reducers/users.js`
 ```js
-import { fromJS } from 'immutable'
-
-export const initialState = fromJS({
+export const initialState = {
   list: [],
-})
+}
 
 export const put = (state, payload) => ({
   ...state,
