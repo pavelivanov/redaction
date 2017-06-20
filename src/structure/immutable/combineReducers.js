@@ -12,8 +12,8 @@ const combineReducers = (reducers) => {
 
     for (let methodName in reducers[nodeName]) {
       if (!reducers[nodeName].hasOwnProperty(methodName)) continue
-      if (methodName == 'default') continue
-      if (methodName == 'initialState') continue
+      if (methodName === 'default') continue
+      if (methodName === 'initialState') continue
 
       const reducer = reducers[nodeName][methodName]
       const type    = `${nodeName}.${methodName}`

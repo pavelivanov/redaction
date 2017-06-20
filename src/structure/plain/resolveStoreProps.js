@@ -4,7 +4,7 @@ const resolveStoreProps = (state, path) => {
   let i
 
   for (i = 0; i < paths.length; ++i) {
-    if (current[paths[i]] == undefined) {
+    if (current[paths[i]] === undefined) {
       return undefined
     }
     current = current[paths[i]]
