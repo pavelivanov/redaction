@@ -1,1 +1,6 @@
-export * from './structure/immutable'
+export {
+  wrapReducers,
+  combineReducers,
+  connect,
+  createStore,
+} from './structure/immutable'

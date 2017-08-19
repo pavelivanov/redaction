@@ -1,1 +1,6 @@
-export * from './structure/plain'
+export {
+  wrapReducers,
+  combineReducers,
+  connect,
+  createStore,
+} from './structure/plain'
