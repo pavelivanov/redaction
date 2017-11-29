@@ -1,8 +1,16 @@
 # UNRELEASED
 
-# 4.0.7 (2017-08-19)
+# 4.1.0 (2017-11-29)
 
-  * Add condition to plain connect method to convert immutable result to plain js Pavel Ivanov 11/29/17, 3:59 PM 
+  * add functionality to convert all immutable data in plain connect
+  * remove second param from connect method, so there is just two params in connect method:
+    ```
+    connect(storeProps, options)
+    ```
+
+# 4.0.7 (2017-11-29)
+
+  * Add condition to plain connect method to convert immutable result to plain js 
 
 # 4.0.6 (2017-08-29)
 
