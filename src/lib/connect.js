@@ -1,37 +1,48 @@
 import { connect } from 'react-redux'
+import { Map } from 'immutable'
 
 
 let _resolveStoreProps
 
 // supports array of strings, strings with dot, or function
-const lookup = (state, value, args) => {
-  if (typeof value === 'function') return value(...args)
-  if (typeof value === 'string') return _resolveStoreProps(state, value)
-  throw new Error(`Unknown lookup value: ${value}`)
+const lookup = (state, ownProps, keyValue) => {
+  if (typeof keyValue === 'function') return keyValue(state, ownProps)
+  if (typeof keyValue === 'string') return _resolveStoreProps(state, keyValue)
+  throw new Error(`Unknown lookup value: ${keyValue}`)
 }
 
-// takes an object where key is anything you want
-// and value (aka storeProp) is either
-// - a dot delimited string
-// - array of strings
-// - function that returns an array of strings
-// it will then dive into an immutable object and grab all of these storeProps
-// and return the same object, but where the values are the resolved data
+/*
+ Takes an object where key is anything you want and value (aka storeProp) is either
+ - a dot delimited string
+ - array of strings
+ - function that returns an array of strings
+ It will then dive into an immutable object and grab all of these storeProps
+ Returns the same object, but where the values are the resolved data
+*/
 const resolve = (storeProps, state, ownProps) => {
   const resolved = {}
+
   for (let key in storeProps) {
     if (storeProps.hasOwnProperty(key)) {
-      resolved[key] = lookup(state, storeProps[key], [state, ownProps])
+      resolved[key] = lookup(state, ownProps, storeProps[key])
     }
   }
+
   return resolved
 }
 
-const mapStateToProps = (storeProps) => (state, ownProps) => {
-  if (typeof storeProps === 'function') {
-    return storeProps(state, ownProps)
+const mapStateToProps = (storeProps, isConvertFromImmutable) => (state, ownProps) => {
+  let _state = state
+
+  if (isConvertFromImmutable && state instanceof Map) {
+    _state = state.toJS()
   }
-  return resolve(storeProps, state, ownProps)
+
+  if (typeof storeProps === 'function') {
+    return storeProps(_state, ownProps)
+  }
+
+  return resolve(storeProps, _state, ownProps)
 }
 
 const defaults = {
@@ -40,12 +51,21 @@ const defaults = {
 }
 
 
-export default (resolveStoreProps) => {
+export default (resolveStoreProps, isConvertFromImmutable) => {
   _resolveStoreProps = resolveStoreProps
 
-  return (storeProps, props, options) => {
+  return (storeProps, options) => {
+    const isCorrectType = (
+      !Array.isArray(storeProps)
+      && [ 'string', 'object', 'function' ].indexOf(typeof storeProps) >= 0
+    )
+
+    if (!storeProps || !isCorrectType) {
+      throw new Error('First argument must be type of String, Object or Function')
+    }
+
     const connector = connect(
-      storeProps ? mapStateToProps(storeProps) : null,
+      mapStateToProps(storeProps, isConvertFromImmutable),
       dispatch => ({
         dispatch,
       }),
