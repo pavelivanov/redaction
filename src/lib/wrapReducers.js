@@ -22,4 +22,5 @@ const wrapReducers = (reducers, dispatch) => {
   return dispatchedReducers
 }
 
+
 export default wrapReducers

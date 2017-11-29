@@ -27,7 +27,7 @@ const resolve = (storeProps, state, ownProps) => {
   return resolved
 }
 
-const mapStateToProps = storeProps => (state, ownProps) => {
+const mapStateToProps = (storeProps) => (state, ownProps) => {
   if (typeof storeProps === 'function') {
     return storeProps(state, ownProps)
   }
@@ -42,6 +42,7 @@ const defaults = {
 
 export default (resolveStoreProps) => {
   _resolveStoreProps = resolveStoreProps
+
   return (storeProps, props, options) => {
     const connector = connect(
       storeProps ? mapStateToProps(storeProps) : null,
@@ -51,6 +52,7 @@ export default (resolveStoreProps) => {
       null,
       { ...defaults, ...options }
     )
+
     return (Component) => {
       Component.storeProps = storeProps
       return connector(Component)
