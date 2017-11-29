@@ -1,5 +1,21 @@
 # UNRELEASED
 
+# 4.0.7 (2017-08-19)
+
+  * Add condition to plain connect method to convert immutable result to plain js Pavel Ivanov 11/29/17, 3:59 PM 
+
+# 4.0.6 (2017-08-29)
+
+  * Replace ES6 exports in root immutable.js with ES5
+
+# 4.0.5 (2017-08-29)
+
+  * Update export format to work with webpack imports resolving
+
+# 4.0.4 (2017-08-19)
+
+  * Update export format to work with webpack imports resolving
+
 # 4.0.3 (2017-04-30)
 
   * Rework module - split to plain and immutable versions
