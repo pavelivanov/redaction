@@ -1,5 +1,9 @@
 ## UNRELEASED
 
+## 4.1.4 (2017-12-03)
+
+  * fix passing condition to convert empty variables, add tests to check it
+
 ## 4.1.3 (2017-12-03)
 
   * fix immutable List converting, add tests to check it
