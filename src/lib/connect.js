@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { Map } from 'immutable'
 
 
 export default (resolveStoreProps, isConvertFromImmutable) => {
@@ -26,7 +25,7 @@ export default (resolveStoreProps, isConvertFromImmutable) => {
       if (storeProps.hasOwnProperty(key)) {
         let result = lookup(state, ownProps, storeProps[key])
 
-        if (isConvertFromImmutable && result instanceof Map) {
+        if (isConvertFromImmutable && typeof result.toJS === 'function') {
           result = result.toJS()
         }
 

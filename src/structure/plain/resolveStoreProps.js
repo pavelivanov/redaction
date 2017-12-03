@@ -1,8 +1,5 @@
-import { Map } from 'immutable'
-
-
 const resolveStoreProps = (state, path) => {
-  if (state instanceof Map) {
+  if (typeof state.toJS === 'function') {
     return state.getIn(path.split('.'))
   }
 

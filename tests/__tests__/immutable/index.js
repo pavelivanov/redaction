@@ -26,6 +26,7 @@ describe('Immutable Store', () => {
     })
 
     expect(component.props().me).toEqual(expected)
+    expect(component.props().myStats).toEqual(expected.get('stats'))
 
   })
 
@@ -46,6 +47,7 @@ describe('Immutable Store', () => {
     }
 
     expect(component.props().me).toEqual(expected)
+    expect(component.props().myStats).toEqual(expected.stats)
 
   })
 

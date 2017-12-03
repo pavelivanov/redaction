@@ -24,6 +24,7 @@ describe('Plain Store', () => {
     }
 
     expect(component.props().me).toEqual(expected)
+    expect(component.props().myStats).toEqual(expected.stats)
 
   })
 
