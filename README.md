@@ -34,7 +34,7 @@ There are Plain and Immutable versions.
 
 ## TODO
 
-- [ ] Write tests
+- [x] Write tests
 - [x] Add ImmutableJS
 - [x] Add `connect` sugar with string paths
 - [ ] Add actionWrapper to call dispatch `pending` and `error` requests in shadow

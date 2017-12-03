@@ -1,5 +1,10 @@
 # UNRELEASED
 
+# 4.1.1 (2017-12-03)
+
+  * add jest tests for immutable and plain connect methods combination with immutable store 
+  * update lib connect wrapper to prevent saving resolveStoreProps method to sharable memory variable  
+
 # 4.1.0 (2017-11-29)
 
   * add functionality to convert all immutable data in plain connect
