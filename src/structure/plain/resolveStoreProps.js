@@ -1,4 +1,11 @@
+import { Map } from 'immutable'
+
+
 const resolveStoreProps = (state, path) => {
+  if (state instanceof Map) {
+    return state.getIn(path.split('.'))
+  }
+
   const paths = path.split('.')
   let current = state
   let i

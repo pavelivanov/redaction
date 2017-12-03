@@ -24,7 +24,13 @@ export default (resolveStoreProps, isConvertFromImmutable) => {
 
     for (let key in storeProps) {
       if (storeProps.hasOwnProperty(key)) {
-        resolved[key] = lookup(state, ownProps, storeProps[key])
+        let result = lookup(state, ownProps, storeProps[key])
+
+        if (isConvertFromImmutable && result instanceof Map) {
+          result = result.toJS()
+        }
+
+        resolved[key] = result
       }
     }
 
@@ -32,17 +38,11 @@ export default (resolveStoreProps, isConvertFromImmutable) => {
   }
 
   const mapStateToProps = (storeProps, isConvertFromImmutable) => (state, ownProps) => {
-    let _state = state
-
-    if (isConvertFromImmutable && state instanceof Map) {
-      _state = state.toJS()
-    }
-
     if (typeof storeProps === 'function') {
-      return storeProps(_state, ownProps)
+      return storeProps(state, ownProps)
     }
 
-    return resolve(storeProps, _state, ownProps)
+    return resolve(storeProps, state, ownProps)
   }
 
   const defaults = {
