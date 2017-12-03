@@ -19,6 +19,7 @@ describe('Immutable Store', () => {
 
     const expected = fromJS({
       name: 'John Doe',
+      avatar: null,
       stats: [
         { type: 'reviews', value: 10 },
         { type: 'orders', value: 20 },
@@ -27,6 +28,7 @@ describe('Immutable Store', () => {
 
     expect(component.props().me).toEqual(expected)
     expect(component.props().myStats).toEqual(expected.get('stats'))
+    expect(component.props().avatar).toEqual(expected.get('avatar'))
 
   })
 
@@ -40,6 +42,7 @@ describe('Immutable Store', () => {
 
     const expected = {
       name: 'John Doe',
+      avatar: null,
       stats: [
         { type: 'reviews', value: 10 },
         { type: 'orders', value: 20 },
@@ -48,6 +51,7 @@ describe('Immutable Store', () => {
 
     expect(component.props().me).toEqual(expected)
     expect(component.props().myStats).toEqual(expected.stats)
+    expect(component.props().avatar).toEqual(expected.avatar)
 
   })
 

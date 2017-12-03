@@ -25,7 +25,7 @@ export default (resolveStoreProps, isConvertFromImmutable) => {
       if (storeProps.hasOwnProperty(key)) {
         let result = lookup(state, ownProps, storeProps[key])
 
-        if (isConvertFromImmutable && typeof result.toJS === 'function') {
+        if (result && isConvertFromImmutable && typeof result.toJS === 'function') {
           result = result.toJS()
         }
 

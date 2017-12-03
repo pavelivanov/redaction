@@ -11,4 +11,5 @@ const App = () => (
 export default connect({
   me: 'me',
   myStats: 'me.stats',
+  avatar: 'me.avatar',
 })(App)
