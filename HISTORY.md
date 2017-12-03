@@ -1,5 +1,9 @@
 # UNRELEASED
 
+# 4.1.2 (2017-12-03)
+
+  * Optimize converting speed from immutable
+
 # 4.1.1 (2017-12-03)
 
   * add jest tests for immutable and plain connect methods combination with immutable store 
