@@ -1,5 +1,9 @@
 ## UNRELEASED
 
+## 4.1.5 (2017-12-13)
+
+  * remove dispatch from connect 
+
 ## 4.1.4 (2017-12-03)
 
   * fix passing condition to convert empty variables, add tests to check it
