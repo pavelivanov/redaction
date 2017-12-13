@@ -61,9 +61,7 @@ export default (resolveStoreProps, isConvertFromImmutable) => {
 
     const connector = connect(
       mapStateToProps(storeProps, isConvertFromImmutable),
-      dispatch => ({
-        dispatch,
-      }),
+      () => ({}),
       null,
       { ...defaults, ...options }
     )
