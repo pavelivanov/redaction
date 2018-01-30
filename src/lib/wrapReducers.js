@@ -1,4 +1,7 @@
-const wrapReducers = (reducers, dispatch) => {
+import { fromJS } from 'immutable'
+
+
+export default (isImmutable) => (reducers, dispatch) => {
   const dispatchedReducers = {}
 
   for (let nodeName in reducers) {
@@ -12,7 +15,10 @@ const wrapReducers = (reducers, dispatch) => {
       if (methodName == 'initialState') continue
 
       const type = `${nodeName}.${methodName}`
-      const dispatchedReducer = (payload) => dispatch({ type, payload })
+      const dispatchedReducer = (payload) => dispatch({
+        type,
+        payload: isImmutable ? fromJS(payload) : payload
+      })
 
       dispatchedReducers[nodeName][methodName] = dispatchedReducer
       dispatchedReducers[nodeName][methodName].type = type
@@ -21,6 +27,3 @@ const wrapReducers = (reducers, dispatch) => {
 
   return dispatchedReducers
 }
-
-
-export default wrapReducers

@@ -11,4 +11,4 @@ export const initialState = fromJS({
 })
 
 export const set = (state, payload) =>
-  fromJS(payload)
+  payload
