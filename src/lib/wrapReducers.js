@@ -17,7 +17,7 @@ export default (isImmutable) => (reducers, dispatch) => {
       const type = `${nodeName}.${methodName}`
       const dispatchedReducer = (payload) => dispatch({
         type,
-        payload: isImmutable ? fromJS(payload) : payload
+        payload: isImmutable ? fromJS(payload) : payload,
       })
 
       dispatchedReducers[nodeName][methodName] = dispatchedReducer
