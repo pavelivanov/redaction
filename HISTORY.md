@@ -1,5 +1,9 @@
 ## UNRELEASED
 
+## 4.1.6 (2018-02-07)
+
+  * replace redux-batched-subscribe with redux-batched-updates
+
 ## 4.1.5 (2017-12-13)
 
   * remove dispatch from connect 
