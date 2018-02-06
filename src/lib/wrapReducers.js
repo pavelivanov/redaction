@@ -8,8 +8,8 @@ const wrapReducers = (reducers, dispatch) => {
 
     for (let methodName in reducers[nodeName]) {
       if (!reducers[nodeName].hasOwnProperty(methodName)) continue
-      if (methodName == 'default') continue
-      if (methodName == 'initialState') continue
+      if (methodName === 'default') continue
+      if (methodName === 'initialState') continue
 
       const type = `${nodeName}.${methodName}`
       const dispatchedReducer = (payload) => dispatch({ type, payload })

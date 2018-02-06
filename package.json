@@ -28,14 +28,13 @@
     "build": "npm run clean && babel ./src --out-dir ./lib"
   },
   "dependencies": {
-    "redux-batched-subscribe": "^0.1.6",
+    "redux-batched-updates": "^0.1.0",
     "redux-immutablejs": "^0.0.8",
     "redux-thunk": "^2.1.0"
   },
   "peerDependencies": {
     "immutable": "^3.0.0",
     "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0",
-    "react-dom": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0",
     "redux": "^2.0.0 || ^3.0.0"
   },
   "devDependencies": {
