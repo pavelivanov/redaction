@@ -1,8 +1,12 @@
 ## UNRELEASED
 
-## 4.1.6 (2018-02-07)
+## 4.1.7 (2018-02-07)
 
-  * replace redux-batched-subscribe with redux-batched-updates
+  * revert back redux-batched-subscribe
+
+## 4.1.6 (2018-02-07) FAILED
+
+  * replace redux-batched-subscribe with redux-batched-updates **(FAIL)**
 
 ## 4.1.5 (2017-12-13)
 
