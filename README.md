@@ -158,6 +158,10 @@ export default connect({
 - [Plain](https://github.com/pavelivanov/redaction/tree/master/docs/Plain.md)
 - [Immutable](https://github.com/pavelivanov/redaction/tree/master/docs/Immutable.md)
 
+## Notice
+
+From 4.2.0 batches updates middleware was removed from the library. To use it check https://github.com/tappleby/redux-batched-subscribe
+
 
 ## TODO
 
