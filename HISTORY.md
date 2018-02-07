@@ -1,5 +1,9 @@
 ## UNRELEASED
 
+## 4.2.0 (2018-02-08)
+
+  * remove redux-batched-subscribe and react-dom. From now for batches feature need to add it by urself
+
 ## 4.1.7 (2018-02-07)
 
   * revert back redux-batched-subscribe
