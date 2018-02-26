@@ -131,7 +131,7 @@ export const addTodo = (text) => {
 
 `App.js`
 ```
-import { addTodo } from 'actions/todos'
+import actions from 'actions'
 import { connect } from 'redaction' 
 
 const App = ({ todos }) => (
@@ -141,7 +141,7 @@ const App = ({ todos }) => (
         <div key={index}>{text}</div>
       ))
     }
-    <button onClick={() => addTodo('new todo name')}>Add</button>
+    <button onClick={() => actions.addTodo('new todo name')}>Add</button>
   </div>
 )
 
