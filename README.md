@@ -114,7 +114,7 @@ export const initialState = {
 export const addTodo = (state, payload) => ({ 
   ...state, 
   todos: [ 
-    ...state.TODO, 
+    ...state.todos, 
     payload 
   ]
 })
