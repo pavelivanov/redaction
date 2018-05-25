@@ -1,5 +1,9 @@
 ## UNRELEASED
 
+## 4.2.1 (2018-05-25)
+
+  * remove immutable from plain wrapReducers
+
 ## 4.2.0 (2018-02-08)
 
   * remove redux-batched-subscribe and react-dom. From now for batches feature need to add it by urself
