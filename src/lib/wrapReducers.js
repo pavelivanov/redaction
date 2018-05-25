@@ -1,7 +1,4 @@
-import { fromJS } from 'immutable'
-
-
-export default (isImmutable) => (reducers, dispatch) => {
+export default (fromJS) => (reducers, dispatch) => {
   const dispatchedReducers = {}
 
   for (let nodeName in reducers) {
@@ -17,7 +14,7 @@ export default (isImmutable) => (reducers, dispatch) => {
       const type = `${nodeName}.${methodName}`
       const dispatchedReducer = (payload) => dispatch({
         type,
-        payload: isImmutable ? fromJS(payload) : payload,
+        payload: fromJS ? fromJS(payload) : payload,
       })
 
       dispatchedReducers[nodeName][methodName] = dispatchedReducer
