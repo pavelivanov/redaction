@@ -1,5 +1,11 @@
 ## UNRELEASED
 
+## 4.3.0 (2018-05-26)
+
+  * add waitList functionality to dispatch reducers only when store created. Now you don't need to wait when your store
+    be created to call wrapReducers() - redaction doing this itself, all you need just to create store and wrap reducers
+    with only one argument - your reducers object
+
 ## 4.2.1 (2018-05-25)
 
   * remove immutable from plain wrapReducers
