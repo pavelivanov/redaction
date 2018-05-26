@@ -55,9 +55,8 @@ export default store
 ```js
 import { wrapReducers } from 'redaction'
 import reducers from 'reducers'
-import store from 'core/store'
 
-export default wrapReducers(reducers, store.dispatch)
+export default wrapReducers(reducers)
 ```
 
 #### `components/Posts.js`
