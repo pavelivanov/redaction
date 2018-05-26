@@ -1,5 +1,6 @@
 import { applyMiddleware, compose, combineReducers, createStore as reduxCreateStore } from 'redux'
 import thunk from 'redux-thunk'
+import data from '../../lib/data'
 
 
 const devTools = typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : (v) => v
@@ -35,6 +36,8 @@ const createStore = ({
       ...finalEnhancers,
     ),
   )
+
+  data.store = store
 
   return store
 }

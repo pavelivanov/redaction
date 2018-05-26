@@ -2,6 +2,7 @@ import { applyMiddleware, compose, createStore as reduxCreateStore } from 'redux
 import { combineReducers } from 'redux-immutablejs'
 import thunk from 'redux-thunk'
 import { Map, Iterable } from 'immutable'
+import data from '../../lib/data'
 
 
 const devTools = typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : (v) => v
@@ -41,6 +42,8 @@ const createStore = ({
       ...finalEnhancers,
     ),
   )
+
+  data.store = store
 
   return store
 }
