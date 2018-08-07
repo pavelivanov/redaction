@@ -24,6 +24,7 @@ npm install --save redaction
 In large projects usage of the standard Redux approach becomes a headache because of of the huge amount of constants and pushing the dispatch across the entire application logic. Redaction comes to help us solve these problems.
 
 **Note:** Redaction is just wrapper over Redux, so it's not *reinventing the wheel*, it's **_sweet sugar_** :)
+
 **BEWARE:** If you use / or planning to use SSR in your project **DON'T USE** Redaction! Currently there are some approaches inside which prevents from doing with SSR in easy way..
 
 ### Redux approach
