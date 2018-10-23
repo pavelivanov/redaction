@@ -68,7 +68,13 @@ export default (resolveStoreProps, isConvertFromImmutable) => {
 
     return (Component) => {
       Component.storeProps = storeProps
-      return connector(Component)
+      const connectedComponent = connector(Component)
+
+      if (Component.propTypes) {
+        connectedComponent.propTypes = Component.propTypes
+      }
+
+      return connectedComponent
     }
   }
 }
