@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import data from '../../lib/data'
 
 
-const devTools = typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : (v) => v
+const devTools = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (v) => v
 
 const defaultMiddleware = [
   thunk,
