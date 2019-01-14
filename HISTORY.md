@@ -1,5 +1,9 @@
 ## UNRELEASED
 
+## 4.4.0 (2019-01-14)
+
+  * remove devTools and redux-thunk from default middleware
+
 ## 4.3.0 (2018-05-26)
 
   * add waitList functionality to dispatch reducers only when store created. Now you don't need to wait when your store
