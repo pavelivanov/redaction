@@ -1,39 +1,21 @@
 import { applyMiddleware, compose, combineReducers, createStore as reduxCreateStore } from 'redux'
-import thunk from 'redux-thunk'
 import data from '../../lib/data'
 
 
-const devTools = typeof window !== 'undefined' && window.devToolsExtension ? window.devToolsExtension() : (v) => v
-
-const defaultMiddleware = [
-  thunk,
-]
-
-const defaultEnhancers = []
-
-const createStore = ({
-  initialState = {},
-  reducers = {},
-  middleware = [],
-  enhancers = [],
-}) => {
-  const finalMiddleware = [
-    ...defaultMiddleware,
-    ...middleware,
-  ]
-
-  const finalEnhancers = [
-    ...defaultEnhancers,
-    ...enhancers,
-    devTools,
-  ]
+const createStore = (props) => {
+  const {
+    initialState = {},
+    reducers = {},
+    middleware = [],
+    enhancers = [],
+  } = props
 
   const store = reduxCreateStore(
     combineReducers(reducers),
     initialState,
     compose(
-      applyMiddleware(...finalMiddleware),
-      ...finalEnhancers,
+      applyMiddleware(...middleware),
+      ...enhancers,
     ),
   )
 
