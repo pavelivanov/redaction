@@ -1,5 +1,5 @@
-import connect from '../../lib/connect'
+import createConnect from '../../lib/createConnect'
 import resolveStoreProps from './resolveStoreProps'
 
 
-export default connect(resolveStoreProps, false)
+export default createConnect(resolveStoreProps, false)
