@@ -18,7 +18,7 @@ const waitList = []
 })()
 
 
-export default (fromJS) => (reducers) => {
+export default (fromJS) => (reducers, rootKey) => {
   const dispatchedReducers = {}
 
   for (let nodeName in reducers) {
@@ -31,10 +31,13 @@ export default (fromJS) => (reducers) => {
       if (methodName === 'default') continue
       if (methodName === 'initialState') continue
 
-      const type = `${nodeName}.${methodName}`
+      const type      = `${nodeName}.${methodName}`
+      const rootType  = `${rootKey ? `${rootKey}.` : ''}${type}`
+
       const dispatchedReducer = (payload) => {
         const method = (dispatch) => dispatch({
           type,
+          rootType,
           payload: fromJS ? fromJS(payload) : payload,
         })
 
