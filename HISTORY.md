@@ -1,5 +1,9 @@
 ## UNRELEASED
 
+## 4.5.0 (2019-03-27)
+
+  * add `rootKey` to wrapReducer, which contains name of reducer's node
+
 ## 4.4.0 (2019-01-14)
 
   * remove devTools and redux-thunk from default middleware
