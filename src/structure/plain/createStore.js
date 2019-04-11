@@ -1,5 +1,5 @@
 import { applyMiddleware, compose, combineReducers, createStore as reduxCreateStore } from 'redux'
-import data from '../../lib/data'
+import { resolveDispatch } from '../../lib/wrapReducers'
 
 
 const createStore = (props) => {
@@ -19,9 +19,7 @@ const createStore = (props) => {
     ),
   )
 
-  data.store = store
-
-  data.resolveWaitList()
+  resolveDispatch(store.dispatch)
 
   return store
 }

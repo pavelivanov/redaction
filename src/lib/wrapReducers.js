@@ -1,12 +1,13 @@
-import data from './data'
-
-
+let dispatch
 const waitList = []
 
-data.resolveWaitList = () => {
-  waitList.forEach((action) => action())
+export const resolveDispatch = (_dispatch) => {
+  while (waitList.length) {
+    const action = waitList.shift()
+    action(_dispatch)
+  }
+  dispatch = _dispatch
 }
-
 
 export default (fromJS) => (reducers, rootKey) => {
   const dispatchedReducers = {}
@@ -25,18 +26,17 @@ export default (fromJS) => (reducers, rootKey) => {
       const rootType  = `${rootKey ? `${rootKey}.` : ''}${type}`
 
       const dispatchedReducer = (payload) => {
-        const action = () => data.store.dispatch({
+        const method = (dispatch) => dispatch({
           type,
           rootType,
           payload: fromJS ? fromJS(payload) : payload,
         })
 
-        if (data.store) {
-          data.resolveWaitList()
-          action()
+        if (dispatch) {
+          method(dispatch)
         }
         else {
-          waitList.push(action)
+          waitList.push(method)
         }
       }
 
