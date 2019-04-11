@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore as reduxCreateStore } from 'redux'
 import { combineReducers } from 'redux-immutablejs'
 import { Map, Iterable } from 'immutable'
-import data from '../../lib/data'
+import { resolveDispatch } from '../../lib/wrapReducers'
 
 
 const createStore = (props) => {
@@ -25,9 +25,7 @@ const createStore = (props) => {
     ),
   )
 
-  data.store = store
-
-  data.resolveWaitList()
+  resolveDispatch(store.dispatch)
 
   return store
 }
