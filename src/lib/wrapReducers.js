@@ -47,6 +47,7 @@ export default (fromJS) => (reducers, rootKey) => {
         })
 
         if (dispatch) {
+          tryResolveWaitList()
           method(dispatch)
         }
         else {
