@@ -4,13 +4,18 @@ import data from './data'
 let dispatch
 const waitList = []
 
-;(function resolveDispatch () {
-  if (data.store) {
+const tryResolveWaitList = () => {
+  if (!dispatch && data.store) {
     dispatch = data.store.dispatch
 
     waitList.forEach((action) => action(dispatch))
   }
-  else {
+}
+
+(function resolveDispatch () {
+  tryResolveWaitList()
+
+  if (!dispatch) {
     setTimeout(() => {
       resolveDispatch()
     }, 100)
