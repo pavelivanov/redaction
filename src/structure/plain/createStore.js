@@ -21,6 +21,8 @@ const createStore = (props) => {
 
   data.store = store
 
+  data.resolveWaitList()
+
   return store
 }
 

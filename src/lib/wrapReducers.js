@@ -1,26 +1,11 @@
 import data from './data'
 
 
-let dispatch
 const waitList = []
 
-const tryResolveWaitList = () => {
-  if (!dispatch && data.store) {
-    dispatch = data.store.dispatch
-
-    waitList.forEach((action) => action(dispatch))
-  }
+data.resolveWaitList = () => {
+  waitList.forEach((action) => action())
 }
-
-(function resolveDispatch () {
-  tryResolveWaitList()
-
-  if (!dispatch) {
-    setTimeout(() => {
-      resolveDispatch()
-    }, 100)
-  }
-})()
 
 
 export default (fromJS) => (reducers, rootKey) => {
@@ -40,18 +25,18 @@ export default (fromJS) => (reducers, rootKey) => {
       const rootType  = `${rootKey ? `${rootKey}.` : ''}${type}`
 
       const dispatchedReducer = (payload) => {
-        const method = (dispatch) => dispatch({
+        const action = () => data.store.dispatch({
           type,
           rootType,
           payload: fromJS ? fromJS(payload) : payload,
         })
 
-        if (dispatch) {
-          tryResolveWaitList()
-          method(dispatch)
+        if (data.store) {
+          data.resolveWaitList()
+          action()
         }
         else {
-          waitList.push(method)
+          waitList.push(action)
         }
       }
 
