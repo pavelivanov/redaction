@@ -1,6 +1,6 @@
 {
   "name": "redaction",
-  "version": "4.5.3",
+  "version": "4.5.4",
   "description": "Reducers without constants and dispatch",
   "homepage": "https://github.com/pavelivanov/redaction#readme",
   "author": "Pavel Ivanov <grammka@gmail.com> (https://github.com/pavelivanov)",
