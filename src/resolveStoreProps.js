@@ -1,8 +1,4 @@
 const resolveStoreProps = (state, path) => {
-  if (typeof state.toJS === 'function') {
-    return state.getIn(path.split('.'))
-  }
-
   const paths = path.split('.')
   let current = state
   let i

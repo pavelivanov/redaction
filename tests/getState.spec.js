@@ -1,4 +1,4 @@
-import { createStore, combineReducers as redactionCombineReducers, wrapReducers } from '../../../lib'
+import { createStore, combineReducers as redactionCombineReducers, wrapReducers } from '../lib'
 
 
 let store = null
@@ -67,6 +67,7 @@ reducers = wrapReducers(localReducers)
 
 
 describe('check store getState()', () => {
+
   it('should return initial state', () => {
     const state = store.getState()
     expect(state).toEqual(initialState)
@@ -79,10 +80,10 @@ describe('check store getState()', () => {
     expect(state.page.isFetching).toEqual(true)
   })
 
-  it('should return changed state after action', async () => {
+  it('should return changed state after action', (done) => {
     actions.page.addActiveFilter('filter1')
 
-    await actions.page.fetchFilters().then(() => {
+    actions.page.fetchFilters().then(() => {
       actions.page.removeDeletedFilters()
 
       const state = store.getState()
@@ -90,10 +91,13 @@ describe('check store getState()', () => {
       expect(state).toEqual({
         page: {
           isFetching: false,
-          filters: ['filter1', 'filter2', 'filter3'],
-          activeFilters: ['filter1']
+          filters: [ 'filter1', 'filter2', 'filter3' ],
+          activeFilters: [ 'filter1' ],
         }
       })
+
+      done()
     })
   })
+
 })

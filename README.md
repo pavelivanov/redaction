@@ -12,22 +12,24 @@ There are Plain and Immutable versions.
 [![Npm Licence](https://img.shields.io/npm/l/redaction.svg)](https://www.npmjs.com/package/redaction)
 
 
-## Install
+### Installation
+
+To install the stable version:
 
 ```bash
 npm install --save redaction
 ```
 
 
-## Overview
+### Overview
 
 In large projects usage of the standard Redux approach becomes a headache because of of the huge amount of constants and pushing the dispatch across the entire application logic. Redaction comes to help us solve these problems.
 
 **Note:** Redaction is just wrapper over Redux, so it's not *reinventing the wheel*, it's **_sweet sugar_** :)
 
-**BEWARE:** If you use / or planning to use SSR in your project **DON'T USE** Redaction! Currently there are some approaches inside which prevents from doing with SSR in easy way..
+**BEWARE:** If you use / or planning to use SSR in your project **DON'T USE** Redaction! Currently there are some approaches inside which prevents from doing with SSR in easy way.. If you still want to use it and get problems with SSR fill free to contact me <a href="mailto:grammka@gmail.com">grammka@gmail.com</a>.
 
-### Redux approach
+#### Redux approach
 
 `constants/todos.js`
 ```js
@@ -105,7 +107,7 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(App)
 ```
 
-### Same with Redaction
+#### Same with Redaction
 
 `reducers/todos.js`
 ```js
@@ -152,23 +154,126 @@ export default connect({
 })(App)
 ```
 
-#### That's it! Nifty :) No constants! No dispatch!
+##### That's it! Nifty :) No constants! No dispatch!
 
 
-## Documentation
+### Usage
 
-- [Plain](https://github.com/pavelivanov/redaction/tree/master/docs/Plain.md)
-- [Immutable](https://github.com/pavelivanov/redaction/tree/master/docs/Immutable.md)
+#### `actions/users.js`
+```js
+import reducers from 'core/reducers'
 
-## Notice
+export const getAll = () => {
+  fetch({
+    endpoint: '/api/users',
+    method: 'GET'
+  })
+    .then((result) => {
+      reducers.users.put(result)
+    })
+}
+```
 
-From 4.2.0 batches updates middleware was removed from the library. To use it check https://github.com/tappleby/redux-batched-subscribe
+#### `reducers/users.js`
+```js
+export const initialState = {
+  list: [],
+}
+
+export const put = (state, payload) => ({
+  ...state,
+  list: [
+    ...state.list,
+    payload,
+  ]
+}) 
+```
+
+#### `core/store.js`
+
+```js
+import { createStore, combineReducers } from 'redaction'
+import { reducer as form } from 'redux-form'
+import reducers from 'reducers'
+
+const initialState = {}
+
+const store = createStore({
+  reducers: {
+    ...combineReducers(reducers),
+    form,
+  },
+  initialState,
+})
+
+export default store
+```
+
+##### `core/reducers.js`
+
+```js
+import { wrapReducers } from 'redaction'
+import reducers from 'reducers'
+
+export default wrapReducers(reducers)
+```
+
+#### `components/Posts.js`
+
+```js
+import React from 'react'
+import { users } from 'actions'
+
+export default class Posts extends React.Component {
+  componentWillMount() {
+    users.getAll()
+  }
+}
+```
 
 
-## TODO
+### Features
 
-- [x] Write tests
-- [x] Add ImmutableJS
-- [x] Add `connect` sugar with string paths
-- [ ] Add actionWrapper to call dispatch `pending` and `error` requests in shadow
-- [x] Test workflow with ReduxForm and ReduxSaga
+#### Connect
+
+There is sugar to connect state to components nifty:
+
+```js
+import React, { Component } from 'react'
+import { connect } from 'redaction'
+
+// option 1
+@connect(state => ({
+  todos: state.todos.list,
+}))
+// option 2
+@connect({
+  todos: 'todos.list',
+})
+// option 3
+@connect({
+  todos: (state) => state.todos.list,
+})
+export default class TodosList extends Component {}
+```
+
+
+### Examples
+
+[Repo examples](https://github.com/pavelivanov/redaction/tree/master/examples/plain)
+
+
+### Tests
+
+Be sure to install `react`, `react-dom`, `redux`, `react-redux` before running tests.
+
+To run tests:
+
+```
+npm run test
+```
+
+
+### TODO
+
+- [ ] Support React hooks

@@ -1,15 +1,7 @@
 let dispatch
 const waitList = []
 
-export const resolveDispatch = (_dispatch) => {
-  while (waitList.length) {
-    const action = waitList.shift()
-    action(_dispatch)
-  }
-  dispatch = _dispatch
-}
-
-export default (fromJS) => (reducers, rootKey) => {
+const wrapReducers = (reducers, rootKey) => {
   const dispatchedReducers = {}
 
   for (let nodeName in reducers) {
@@ -29,7 +21,7 @@ export default (fromJS) => (reducers, rootKey) => {
         const method = (dispatch) => dispatch({
           type,
           rootType,
-          payload: fromJS ? fromJS(payload) : payload,
+          payload,
         })
 
         if (dispatch) {
@@ -46,4 +38,19 @@ export default (fromJS) => (reducers, rootKey) => {
   }
 
   return dispatchedReducers
+}
+
+const resolveDispatch = (_dispatch) => {
+  while (waitList.length) {
+    const action = waitList.shift()
+    action(_dispatch)
+  }
+  dispatch = _dispatch
+}
+
+
+export default wrapReducers
+
+export {
+  resolveDispatch,
 }

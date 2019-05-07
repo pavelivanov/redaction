@@ -1,20 +1,14 @@
-import { applyMiddleware, compose, createStore as reduxCreateStore } from 'redux'
-import { combineReducers } from 'redux-immutablejs'
-import { Map, Iterable } from 'immutable'
-import { resolveDispatch } from '../../lib/wrapReducers'
+import { applyMiddleware, compose, combineReducers, createStore as reduxCreateStore } from 'redux'
+import { resolveDispatch } from './wrapReducers'
 
 
 const createStore = (props) => {
   const {
-    initialState = Map(),
+    initialState = {},
     reducers = {},
     middleware = [],
     enhancers = [],
   } = props
-
-  if (!Iterable.isIterable(initialState)) {
-    throw new Error('Invalid initialState option')
-  }
 
   const store = reduxCreateStore(
     combineReducers(reducers),
