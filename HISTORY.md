@@ -1,4 +1,6 @@
-## UNRELEASED
+## 5.0.0
+
+  * remove immutable version
 
 ## 4.5.0 (2019-03-27)
 
