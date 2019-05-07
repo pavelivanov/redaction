@@ -264,12 +264,10 @@ export default class TodosList extends Component {}
 
 ### Tests
 
-Be sure to install `react`, `react-dom`, `redux`, `react-redux` before running tests.
-
 To run tests:
 
 ```
-npm run test
+npm test
 ```
 
 
