@@ -5,7 +5,6 @@
 ### Redux reducers without constants and dispatching!
 
 Redaction is wrapper for reducers. The main purpose is to refuse from using constants and dispatch method in code.
-There are Plain and Immutable versions.
 
 [![Npm Version](https://badge.fury.io/js/redaction.svg)](https://www.npmjs.com/package/redaction)
 [![Month Downloads](https://img.shields.io/npm/dm/redaction.svg)](http://npm-stat.com/charts.html?package=redaction)
