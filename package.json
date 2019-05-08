@@ -20,6 +20,10 @@
     "dispatch"
   ],
   "main": "./lib",
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "test": "npm run build && jest",
     "prepublish": "npm run build",
