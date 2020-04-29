@@ -20,7 +20,7 @@ npm install --save redaction
 ```
 
 
-### Overview
+## Overview
 
 In large projects usage of the standard Redux approach becomes a headache because of of the huge amount of constants and pushing the dispatch across the entire application logic. Redaction comes to help us solve these problems.
 
@@ -28,9 +28,10 @@ In large projects usage of the standard Redux approach becomes a headache becaus
 
 **BEWARE:** If you use / or planning to use SSR in your project **DON'T USE** Redaction! Currently there are some approaches inside which prevents from doing with SSR in easy way.. If you still want to use it and get problems with SSR fill free to contact me <a href="mailto:grammka@gmail.com">grammka@gmail.com</a>.
 
-#### Redux approach
 
-`constants/todos.js`
+## Redux approach
+
+##### `constants/todos.js`
 ```js
 const ADD_TODO = 'ADD_TODO'
 
@@ -39,7 +40,7 @@ export {
 }
 ```
 
-`reducers/todos.js`
+##### `reducers/todos.js`
 ```js
 import { ADD_TODO } from 'constants/todos'
 
@@ -65,7 +66,7 @@ export default (state = initialState, action) => {
 }
 ```
 
-`actions/todos.js`
+##### `actions/todos.js`
 ```js
 import { ADD_TODO } from 'constants/todos'
 
@@ -77,7 +78,7 @@ export const addTodo = (text) => (dispatch) => {
 }
 ```
 
-`App.js`
+##### `App.js`
 ```js
 import { connect } from 'react-redux'
 import { addTODO } from 'actions/todos' 
@@ -106,9 +107,11 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(App)
 ```
 
-#### Same with Redaction
+<br />
 
-`reducers/todos.js`
+## Same with Redaction
+
+##### `reducers/todos.js`
 ```js
 export const initialState = {
  todos: []
@@ -123,7 +126,7 @@ export const addTodo = (state, payload) => ({
 })
 ```
 
-`actions/todos.js`
+##### `actions/todos.js`
 ```js
 import { reducers } from 'core/reducers' // read docs to understand what core folder means
 
@@ -156,9 +159,11 @@ export default connect({
 ##### That's it! Nifty :) No constants! No dispatch!
 
 
-### Usage
+<br />
 
-#### `actions/users.js`
+## Usage
+
+##### `actions/users.js`
 ```js
 import reducers from 'core/reducers'
 
@@ -173,7 +178,7 @@ export const getAll = () => {
 }
 ```
 
-#### `reducers/users.js`
+##### `reducers/users.js`
 ```js
 export const initialState = {
   list: [],
@@ -188,7 +193,7 @@ export const put = (state, payload) => ({
 }) 
 ```
 
-#### `core/store.js`
+##### `core/store.js`
 
 ```js
 import { createStore, combineReducers } from 'redaction'
@@ -217,7 +222,7 @@ import reducers from 'reducers'
 export default wrapReducers(reducers)
 ```
 
-#### `components/Posts.js`
+##### `components/Posts.js`
 
 ```js
 import React from 'react'
@@ -230,8 +235,9 @@ export default class Posts extends React.Component {
 }
 ```
 
+<br />
 
-### Features
+## Features
 
 #### Connect
 
@@ -256,13 +262,15 @@ import { connect } from 'redaction'
 export default class TodosList extends Component {}
 ```
 
+<br />
 
-### Examples
+## Examples
 
 [Repo examples](https://github.com/pavelivanov/redaction/tree/master/examples/plain)
 
+<br />
 
-### Tests
+## Tests
 
 To run tests:
 
@@ -270,7 +278,8 @@ To run tests:
 npm test
 ```
 
+<br />
 
-### TODO
+## TODO
 
 - [ ] Support React hooks
