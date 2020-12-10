@@ -33,7 +33,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "jest --bail --colors",
+    "test": "cross-env TEST=1 jest --bail --colors",
     "build": "rimraf ./dist && rimraf ./lib && rollup -c",
     "watch": "rollup -cw",
     "prepublish": "npm run build && npm run test"
@@ -50,10 +50,12 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
     "@babel/plugin-transform-destructuring": "^7.12.1",
     "@babel/preset-env": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.7.7",
     "@testing-library/react-hooks": "^3.2.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "jest": "^24.9.0",
