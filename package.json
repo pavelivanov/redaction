@@ -1,13 +1,18 @@
 {
   "name": "redaction",
   "version": "5.0.2",
+  "author": {
+    "name": "Pavel Ivanov",
+    "email": "grammka@gmail.com"
+  },
   "description": "Reducers without constants and dispatch",
   "homepage": "https://github.com/pavelivanov/redaction#readme",
-  "author": "Pavel Ivanov <grammka@gmail.com> (https://github.com/pavelivanov)",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pavelivanov/redaction.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pavelivanov/redaction/issues"
   },
   "keywords": [
     "redaction",
@@ -19,17 +24,19 @@
     "constants",
     "dispatch"
   ],
-  "main": "./lib",
   "files": [
     "lib",
-    "src"
+    "dist"
   ],
+  "license": "ISC",
+  "module": "dist/index.es.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "npm run build && jest",
-    "prepublish": "npm run build",
-    "clean": "rimraf ./lib",
-    "dev": "babel -w ./src --out-dir ./lib",
-    "build": "npm run clean && babel ./src --out-dir ./lib"
+    "test": "jest --bail --colors",
+    "build": "rimraf ./dist && rimraf ./lib && rollup -c",
+    "watch": "rollup -cw",
+    "prepublish": "npm run build && npm run test"
   },
   "peerDependencies": {
     "react": "^15.0.0-0 || ^16.0.0-0",
@@ -38,23 +45,31 @@
     "react-redux": "^5.0.0 || ^6.0.0 || ^7.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
-    "babel-jest": "^24.8.0",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.12.1",
-    "jest": "^24.8.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-redux": "^7.0.3",
-    "redux": "^4.0.1",
-    "rimraf": "^2.6.3"
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.7",
+    "@babel/plugin-transform-classes": "^7.7.4",
+    "@babel/plugin-transform-destructuring": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.7",
+    "@babel/register": "^7.7.7",
+    "@testing-library/react-hooks": "^3.2.1",
+    "@types/react": "^16.9.22",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "jest": "^24.9.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.1.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "typescript": "^3.8.3"
   },
-  "jest": {
-    "verbose": true,
-    "rootDir": "./tests"
+  "dependencies": {
+    "@types/react-redux": "^7.1.11"
   }
 }

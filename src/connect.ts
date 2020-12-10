@@ -1,9 +1,21 @@
 import { connect as reduxConnect } from 'react-redux'
+import type { Options } from 'react-redux'
 import resolveStoreProps from './resolveStoreProps'
+import type { State } from './types'
 
+
+type OwnProps = { [key: string]: any }
+
+type Function = (state: State, ownProps: OwnProps) => void
+
+type KeyValue = string | Function | any
+
+type Resolved = { [key: string]: typeof lookup}
+
+type StoreProps = { [key: string]: KeyValue }
 
 // supports array of strings, strings with dot, or function
-const lookup = (state, ownProps, keyValue) => {
+const lookup = (state: State, ownProps: OwnProps, keyValue: KeyValue) => {
   if (typeof keyValue === 'function') return keyValue(state, ownProps)
   if (typeof keyValue === 'string') return resolveStoreProps(state, keyValue)
   throw new Error(`Unknown lookup value: ${keyValue}`)
@@ -16,8 +28,8 @@ const lookup = (state, ownProps, keyValue) => {
  - function that returns an array of strings
  Returns the same object, but where the values are the resolved data
  */
-const resolve = (storeProps, state, ownProps) => {
-  const resolved = {}
+const resolve = (storeProps: StoreProps, state: State, ownProps: OwnProps) => {
+  const resolved: Resolved = {}
 
   for (let key in storeProps) {
     if (storeProps.hasOwnProperty(key)) {
@@ -28,12 +40,12 @@ const resolve = (storeProps, state, ownProps) => {
   return resolved
 }
 
-const mapStateToProps = (storeProps) => (state, ownProps) => {
+const mapStateToProps = (storeProps: Function | StoreProps) => (state: State, ownProps: OwnProps) => {
   if (typeof storeProps === 'function') {
     return storeProps(state, ownProps)
   }
 
-  return resolve(storeProps, state, ownProps)
+  return resolve(storeProps as Function, state, ownProps)
 }
 
 const defaults = {
@@ -41,7 +53,7 @@ const defaults = {
   withRef: false,
 }
 
-const connect = (storeProps, options) => {
+const connect = (storeProps: Function | StoreProps, options: Options) => {
   const isCorrectType = (
     !Array.isArray(storeProps)
     && [ 'string', 'object', 'function' ].indexOf(typeof storeProps) >= 0
@@ -58,7 +70,7 @@ const connect = (storeProps, options) => {
     { ...defaults, ...options }
   )
 
-  return (Component) => {
+  return (Component: any) => {
     Component.storeProps = storeProps
     return connector(Component)
   }

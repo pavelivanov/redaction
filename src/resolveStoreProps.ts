@@ -1,4 +1,7 @@
-const resolveStoreProps = (state, path) => {
+import type { State } from './types'
+
+
+const resolveStoreProps = (state: State, path: string) => {
   const paths = path.split('.')
   let current = state
   let i

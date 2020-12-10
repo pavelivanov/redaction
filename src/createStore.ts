@@ -1,8 +1,17 @@
 import { applyMiddleware, compose, combineReducers, createStore as reduxCreateStore } from 'redux'
+import type { Middleware, StoreEnhancer } from 'redux'
 import { resolveDispatch } from './wrapReducers'
+import type { State, Reducers } from './types'
 
 
-const createStore = (props) => {
+type Props = {
+  initialState?: State
+  reducers: Reducers
+  middleware?: Middleware[]
+  enhancers?: StoreEnhancer[]
+}
+
+const createStore = (props: Props) => {
   const {
     initialState = {},
     reducers = {},
